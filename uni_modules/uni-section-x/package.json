@@ -1,0 +1,64 @@
+{
+	"id": "uni-section-x",
+	"displayName": "uni-section-x 标题栏",
+	"version": "0.0.1",
+	"description": "标题栏组件",
+	"keywords": [
+		"uni-ui-x",
+		"uniuix",
+		"标题栏"
+	],
+	"engines": {
+		"HBuilderX": ""
+	},
+	"dcloudext": {
+		"category": [
+			"前端组件",
+			"通用组件"
+		],
+		"sale": {
+			"regular": {
+				"price": "0.00"
+			},
+			"sourcecode": {
+				"price": "0.00"
+			}
+		},
+		"contact": {
+			"qq": ""
+		},
+		"declaration": {
+			"ads": "无",
+			"data": "无",
+			"permissions": "无"
+		}
+	},
+	"uni_modules": {
+		"dependencies": [
+			"uni-scss"
+		],
+		"encrypt": [],
+		"platforms": {
+			"cloud": {
+				"tcb": "y",
+				"aliyun": "y"
+			},
+			"client": {
+				"App": {
+					"app-vue": "y",
+					"app-nvue": "y"
+				},
+				"H5-pc": {
+					"Chrome": "y",
+					"IE": "y",
+					"Edge": "y",
+					"Firefox": "y",
+					"Safari": "y"
+				},
+				"Vue": {
+					"vue3": "y"
+				}
+			}
+		}
+	}
+}

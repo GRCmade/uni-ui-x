@@ -1,0 +1,64 @@
+{
+	"id": "uni-list-x",
+	"displayName": "uni-list-x 列表",
+	"version": "0.0.1",
+	"description": "列表组件",
+	"keywords": [
+		"uni-list-x",
+		"unilistx",
+		"列表"
+	],
+	"engines": {
+		"HBuilderX": ""
+	},
+	"dcloudext": {
+		"category": [
+			"前端组件",
+			"通用组件"
+		],
+		"sale": {
+			"regular": {
+				"price": "0.00"
+			},
+			"sourcecode": {
+				"price": "0.00"
+			}
+		},
+		"contact": {
+			"qq": ""
+		},
+		"declaration": {
+			"ads": "无",
+			"data": "无",
+			"permissions": "无"
+		}
+	},
+	"uni_modules": {
+		"dependencies": [
+			"uni-scss"
+		],
+		"encrypt": [],
+		"platforms": {
+			"cloud": {
+				"tcb": "y",
+				"aliyun": "y"
+			},
+			"client": {
+				"App": {
+					"app-vue": "y",
+					"app-nvue": "y"
+				},
+				"H5-pc": {
+					"Chrome": "y",
+					"IE": "y",
+					"Edge": "y",
+					"Firefox": "y",
+					"Safari": "y"
+				},
+				"Vue": {
+					"vue3": "y"
+				}
+			}
+		}
+	}
+}
