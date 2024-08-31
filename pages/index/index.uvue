@@ -1,7 +1,6 @@
 <template>
 	<view class="">
 		<view class="page" @click="click">section-x</view>
-		<uni-list-x></uni-list-x>
 	</view>
 </template>
 
@@ -10,17 +9,17 @@
 		data() {
 			return {
 				title: 'Hello',
-				test: false
+				test:false
 			}
 		},
 		onLoad() {
-			this.click('section-x')
+
 		},
 		methods: {
-			click(e : string) : void {
+			click(){
 				uni.navigateTo({
-					url: `/pages/uvue/${e}/${e}`,
-					fail(e) {
+					url:"/pages/uvue/section-x/section-x",
+					fail(e){
 						console.log(e)
 					}
 				})
@@ -35,4 +34,5 @@
 	.page {
 		background-color: $uni-bg-color-grey;
 	}
+
 </style>
