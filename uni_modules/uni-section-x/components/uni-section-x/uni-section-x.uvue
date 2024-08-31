@@ -3,19 +3,18 @@
 		<view class="uni-section-header" @click="onClick">
 			<view class="uni-section-header__decoration" v-if="type" :class="type" />
 			<slot v-else name="decoration"></slot>
-			
+
 			<view class="uni-section-header__content">
-				<text class="uni-section-header__content-color"
-					:style="{'font-size':titleFontSize,'color':titleColor}">{{ title }}</text>
+				<text class="uni-section-header__content-color" :style="{'font-size':titleFontSize,'color':titleColor}">{{ title }}</text>
 				<text v-if="subTitle" :style="{'font-size':subTitleFontSize,'color':subTitleColor}"
 					class="uni-section-header__content-sub uni-section-header__content-color">{{ subTitle }}</text>
 			</view>
-			
+
 			<view>
 				<slot name="right"></slot>
 			</view>
 		</view>
-		
+
 		<view :style="{padding: padding}">
 			<slot />
 		</view>
@@ -74,7 +73,7 @@
 			},
 			padding: {
 				type: String,
-				default: '0px'
+				default: "10px"
 			}
 		},
 		computed: {
@@ -96,7 +95,9 @@
 
 		.uni-section-header {
 			position: relative;
+			/* #ifndef APP-NVUE */
 			display: flex;
+			/* #endif */
 			flex-direction: row;
 			align-items: center;
 			padding: 12px 10px;
@@ -128,14 +129,15 @@
 			}
 
 			&__content {
+				/* #ifndef APP-NVUE */
 				display: flex;
+				/* #endif */
 				flex-direction: column;
 				flex: 1;
 
 				&-color {
 					color: #333;
 				}
-
 				&-sub {
 					margin-top: 2px;
 				}

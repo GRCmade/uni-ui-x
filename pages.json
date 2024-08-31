@@ -12,20 +12,6 @@
 			{
 				"navigationBarTitleText" : "section-x 标题栏"
 			}
-		},
-		{
-			"path" : "pages/uvue/list-x/list-x",
-			"style" : 
-			{
-				"navigationBarTitleText" : "list-x列表页"
-			}
-		},
-		{
-			"path" : "pages/test/test/test",
-			"style" : 
-			{
-				"navigationBarTitleText" : "测试页面"
-			}
 		}
 	],
 	"globalStyle": {
