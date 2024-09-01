@@ -14,38 +14,21 @@
 	 * @property {String} 	border = [true|false] 		标题
 	 */
 	export default {
-		name: 'uniList',
+		name: 'uniListx',
 		props: {
-			stackFromEnd: {
-				type: Boolean,
-				default: false
-			},
-			enableBackToTop: {
-				type: [Boolean, String],
-				default: false
-			},
-			scrollY: {
-				type: [Boolean, String],
-				default: false
-			},
 			border: {
 				type: Boolean,
 				default: true
-			},
-			renderReverse: {
-				type: Boolean,
-				default: false
+			}
+		},
+		data() {
+			return{
+				firstChildAppend:false
 			}
 		},
 		created() {
 		},
 		methods: {
-			loadMore() {
-				this.$emit('scrolltolower');
-			},
-			// scroll(e) {
-			// 	this.$emit('scroll', e);
-			// }
 		}
 	};
 </script>
@@ -59,17 +42,6 @@
 		background-color: $uni-bg-color;
 		position: relative;
 		flex-direction: column;
-	}
-
-	.uni-list--border {
-		position: relative;
-		border-top-color: $uni-border-color;
-		border-top-style: solid;
-		border-top-width: 0.5px;
-		border-bottom-color: $uni-border-color;
-		border-bottom-style: solid;
-		border-bottom-width: 0.5px;
-		z-index: -1;
 	}
 
 	.uni-list--border-top {

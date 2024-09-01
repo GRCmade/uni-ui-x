@@ -1,7 +1,6 @@
 <template>
 	<view class="">
 		<view class="page" @click="click">section-x</view>
-		<uni-list-x></uni-list-x>
 	</view>
 </template>
 
@@ -14,7 +13,9 @@
 			}
 		},
 		onLoad() {
-			this.click('section-x')
+			this.$nextTick(()=>{
+				this.click('list-x')
+			})
 		},
 		methods: {
 			click(e : string) : void {
