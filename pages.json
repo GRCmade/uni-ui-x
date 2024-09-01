@@ -26,6 +26,13 @@
 			{
 				"navigationBarTitleText" : "测试页面"
 			}
+		},
+		{
+			"path" : "pages/uvue/list-x/chat-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "chat页面"
+			}
 		}
 	],
 	"globalStyle": {
