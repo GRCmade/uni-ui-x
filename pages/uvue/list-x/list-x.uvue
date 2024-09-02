@@ -47,7 +47,7 @@
 				</uni-section-x>
 				<uni-section-x title="显示图标或图片" type="line">
 					<uni-list-x>
-						<uni-list-item-x :show-extra-icon="true" showArrow :extra-icon="extraIcon" title="列表左侧带扩展图标" />
+						<uni-list-item-x :show-extra-icon="true" showArrow title="列表左侧带扩展图标" />
 						<uni-list-item-x title="列表左侧带略缩图" note="列表描述信息" showArrow
 							thumb="/static/c1.png"
 							thumb-size="sm" rightText="小图" />
@@ -96,6 +96,7 @@
 </template>
 
 <script>
+	import { UniListItemXExtraIcon } from '../../../uni_modules/uni-types-x/types/UniListX';
 	export default {
 		components: {},
 		data() {
@@ -104,9 +105,9 @@
 				avatar: 'https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png',
 				extraIcon: {
 					color: '#4cd964',
-					size: '22',
+					size: 22,
 					type: 'gear-filled'
-				}
+				} as UniListItemXExtraIcon
 			};
 		},
 		methods: {
@@ -129,8 +130,8 @@
 <style lang="scss">
 	.slot-box {
 		display: flex;
-		flex-direction: row;
-		align-items: center;
+		// flex-direction: row;
+		// align-items: center;
 	}
 
 	.slot-image {

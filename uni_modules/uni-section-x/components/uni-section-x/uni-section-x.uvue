@@ -98,7 +98,7 @@
 			position: relative;
 			display: flex;
 			flex-direction: row;
-			align-items: center;
+			// align-items: center;
 			padding: 12px 10px;
 
 

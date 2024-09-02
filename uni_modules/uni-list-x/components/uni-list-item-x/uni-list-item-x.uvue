@@ -10,7 +10,7 @@
 					<image :src="thumb" class="uni-list-item__icon-img" :class="['uni-list--' + thumbSize]" />
 				</view>
 				<view v-else-if="showExtraIcon" class="uni-list-item__icon">
-					<uni-icons-x :color="_extraIcon.color" :size="_extraIcon.size" :type="_extraIcon.type" />
+					<uni-icons-x :color="extraIcon.color" :size="extraIcon.size" :type="extraIcon.type" />
 				</view>
 				<slot name="header"></slot>
 			</view>
@@ -35,7 +35,7 @@
 </template>
 
 <script>
-	import { ExtraIcon, Padding } from './ulistitemx.uts';
+	import { UniListItemXExtraIcon } from '@/uni_modules/uni-types-x/types/UniListX.uts';
 	/**
 	 * ListItem 列表子组件
 	 * @description 列表子组件
@@ -43,10 +43,10 @@
 	 * @property {String} 	title 							标题
 	 * @property {String} 	note 							描述
 	 * @property {String} 	thumb 							左侧缩略图，若thumb有值，则不会显示扩展图标
-	 * @property {String}  	thumbSize = [lg|base|sm]		略缩图大小
-	 * 	@value 	 lg			大图
-	 * 	@value 	 base		一般
-	 * 	@value 	 sm			小图
+	 * @property {String}  	thumbSize {String}略缩图大小 lg|base|sm
+	 *	@value 	 lg			大图
+	 *	@value 	 base		一般
+	 *	@value 	 sm			小图
 	 * @property {String} 	badgeText						数字角标内容
 	 * @property {String} 	badgeType 						数字角标类型，参考[uni-icons](https://ext.dcloud.net.cn/plugin?id=21)
 	 * @property {Object}   badgeStyle           数字角标样式
@@ -63,7 +63,7 @@
 	 * @property {Boolean} 	showSwitch = [true|false] 		是否显示Switch
 	 * @property {Boolean} 	switchChecked = [true|false] 	Switch是否被选中
 	 * @property {Boolean} 	showExtraIcon = [true|false] 	左侧是否显示扩展图标
-	 * @property {Object} 	extraIcon 						扩展图标参数，格式为 {color: '#4cd964',size: '22',type: 'spinner'}
+	 * @property {Object}	extraIcon	{UListItemXExtraIcon}扩展图标参数，格式为 {color: '#4cd964',size: '22',type: 'spinner'}
 	 * @property {String} 	direction = [row|column]		排版方向
 	 * @value row 			水平排列
 	 * @value column 		垂直排列
@@ -153,12 +153,12 @@
 				default: false
 			},
 			extraIcon: {
-				type: Object as PropType<UTSJSONObject>,
-				default: () : UTSJSONObject => ({
-					color: '#fff',
+				type: Object as PropType<UniListItemXExtraIcon>,
+				default: () : UniListItemXExtraIcon => ({
+					color: '#000',
 					type: "list",
 					size: 16
-				})
+				} as UniListItemXExtraIcon)
 			},
 			border: {
 				type: Boolean,
@@ -166,23 +166,19 @@
 			}
 		},
 		computed: {
-			_extraIcon() : ExtraIcon {
-				let stringObj = JSON.stringify(this.extraIcon)
-				return JSON.parse<ExtraIcon>(stringObj) as ExtraIcon
-			},
+			// _extraIcon() : UniListItemXExtraIcon {
+			// 	if(this.extraIcon instanceof UniListItemXExtraIcon){
+			// 		return this.extraIcon
+			// 	}
+			// 	return JSON.parse<UniListItemXExtraIcon>(JSON.stringify(this.extraIcon)) as UniListItemXExtraIcon
+			// },
 		},
 		watch: {
 		},
 		// inject: ['list'],
 		data() {
 			return {
-				isFirstChild: false,
-				padding: {
-					top: "",
-					right: "",
-					bottom: "",
-					left: ""
-				} as Padding
+				isFirstChild: false
 			};
 		},
 		mounted() {
@@ -312,10 +308,10 @@
 
 	.uni-list-item {
 		display: flex;
-		font-size: $uni-font-size-lg;
+		// font-size: $uni-font-size-lg;
 		position: relative;
 		justify-content: space-between;
-		align-items: center;
+		// align-items: center;
 		background-color: #fff;
 		flex-direction: row;
 		/* #ifdef H5 */
@@ -373,7 +369,7 @@
 		padding: $list-item-pd;
 		padding-left: $uni-spacing-row-lg;
 		flex: 1;
-		color: #3b4144;
+		// color: #3b4144;
 		overflow: hidden;
 		flex-direction: column;
 		justify-content: space-between;
@@ -402,13 +398,13 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;
-		align-items: center;
+		// align-items: center;
 	}
 
 	.uni-list-item__header {
 		display: flex;
 		justify-content: center;
-		align-items: center;
+		// align-items: center;
 	}
 
 	.uni-list-item__icon {
@@ -423,7 +419,7 @@
 
 	.uni-icon-wrapper {
 		display: flex;
-		align-items: center;
+		// align-items: center;
 		padding: 0 10px;
 	}
 
