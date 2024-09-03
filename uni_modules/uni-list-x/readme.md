@@ -11,5 +11,6 @@
 
 ### 当前还存在的问题
 
-- 在Andorid端，取消border之后，第一个`uni-list-item-x`的上border不会取消
-- 有一堆style的警告
+- 【已修复】在Andorid端，取消border之后，第一个`uni-list-item-x`的上border不会取消 
+- 【已修复】有一堆style的警告
+- 由于uni-bage还没适配，因此相关属性未验证

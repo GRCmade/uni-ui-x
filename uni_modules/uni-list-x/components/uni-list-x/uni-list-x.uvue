@@ -29,6 +29,12 @@
 		created() {
 		},
 		methods: {
+			changeFirstChildAppend(){
+				this.firstChildAppend = true
+			},
+			getFirstChildAppend():boolean{
+				return this.firstChildAppend
+			}
 		}
 	};
 </script>

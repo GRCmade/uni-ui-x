@@ -35,7 +35,7 @@
 </template>
 
 <script>
-	import { UniListItemXExtraIcon } from '@/uni_modules/uni-types-x/types/UniListX.uts';
+	import { UniListItemXExtraIcon,UniListItemXSwitchChangeEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * ListItem 列表子组件
 	 * @description 列表子组件
@@ -166,12 +166,6 @@
 			}
 		},
 		computed: {
-			// _extraIcon() : UniListItemXExtraIcon {
-			// 	if(this.extraIcon instanceof UniListItemXExtraIcon){
-			// 		return this.extraIcon
-			// 	}
-			// 	return JSON.parse<UniListItemXExtraIcon>(JSON.stringify(this.extraIcon)) as UniListItemXExtraIcon
-			// },
 		},
 		watch: {
 		},
@@ -198,14 +192,12 @@
 					parentName = parent?.$options.name;
 					if (parent == null) bool = false
 				}
-				// #ifndef APP-ANDROID
 				if (bool) {
-					if (parent?.firstChildAppend === false) {
-						parent.firstChildAppend = true;
+					if (!(parent!.$callMethod('getFirstChildAppend') as Boolean)) {
+						parent!.$callMethod('changeFirstChildAppend')
 						this.isFirstChild = true;
 					}
 				}
-				// #endif
 			},
 			onClick() {
 				if (this.to !== '') {
@@ -219,7 +211,10 @@
 				}
 			},
 			onSwitchChange(e : UniSwitchChangeEvent) {
-				this.$emit('switchChange', e.detail);
+				let event:UniListItemXSwitchChangeEvent = {
+					value:e.detail.value
+				}
+				this.$emit('switchChange', event );
 			},
 			openPage() : void {
 				const index = ['navigateTo', 'redirectTo', 'reLaunch', 'switchTab'].indexOf(this.link)
@@ -311,7 +306,7 @@
 		// font-size: $uni-font-size-lg;
 		position: relative;
 		justify-content: space-between;
-		// align-items: center;
+		align-items: center;
 		background-color: #fff;
 		flex-direction: row;
 		/* #ifdef H5 */
@@ -333,6 +328,7 @@
 		flex-direction: row;
 		// padding: $list-item-pd;
 		// padding-left: $uni-spacing-row-lg;
+		padding-right: $uni-spacing-row-lg;
 		flex: 1;
 		overflow: hidden;
 		// align-items: center;
@@ -398,7 +394,7 @@
 		display: flex;
 		flex-direction: row;
 		justify-content: flex-end;
-		// align-items: center;
+		align-items: center;
 	}
 
 	.uni-list-item__header {

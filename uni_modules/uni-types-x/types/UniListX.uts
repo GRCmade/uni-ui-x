@@ -1,9 +1,0 @@
-/**
- * UniListItemXExtraIcon
- * 用于 uni-list-item-x 的
- */
-export type UniListItemXExtraIcon = {
-	type?: string
-	color?: string
-	size?: number
-}

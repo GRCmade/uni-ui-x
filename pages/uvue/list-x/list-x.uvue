@@ -20,6 +20,7 @@
 					<uni-list-x>
 						<uni-list-item-x showArrow title="列表文字" />
 						<uni-list-item-x showArrow title="列表文字" rightText="右侧文字" />
+						<uni-list-item-x title="列表文字" showSwitch @switchChange="switchChange"/>
 					</uni-list-x>
 				</uni-section-x>
 				<uni-section-x title="开启点击反馈" type="line">
@@ -96,7 +97,7 @@
 </template>
 
 <script>
-	import { UniListItemXExtraIcon } from '../../../uni_modules/uni-types-x/types/UniListX';
+	import { UniListItemXExtraIcon,UniListItemXSwitchChangeEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	export default {
 		components: {},
 		data() {
@@ -117,12 +118,13 @@
 					title: '点击反馈'
 				});
 			},
-			// switchChange(e) {
-			// 	uni.showToast({
-			// 		title: 'change:' + e.value,
-			// 		icon: 'none'
-			// 	});
-			// }
+			switchChange(e:UniListItemXSwitchChangeEvent) {
+				console.log(e)
+				uni.showToast({
+					title: 'change:' + e.value,
+					icon: 'none'
+				});
+			}
 		}
 	};
 </script>

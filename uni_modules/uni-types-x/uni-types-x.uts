@@ -1,0 +1,24 @@
+// ------ list-x ------ 
+
+/**
+ * UniListItemXExtraIcon
+ * 用于 uni-list-item-x 的ExtraIcon的类型
+ */
+export type UniListItemXExtraIcon = {
+	type?: string
+	color?: string
+	size?: number
+}
+/**
+ * UniListItemXSwitchChangeEvent
+ * 用于SwitchChange的返回事件的类型
+ */
+export type UniListItemXSwitchChangeEvent = {
+	value:Boolean
+}
+
+/**
+ * UniListItemXClickEvent
+ * 用于click的返回事件的类型，有多种事件，包含navigatorTo/redirectTo等
+ */
+export type UniListItemXClickEvent = any
