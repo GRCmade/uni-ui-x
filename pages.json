@@ -33,6 +33,27 @@
 			{
 				"navigationBarTitleText" : "chat页面"
 			}
+		},
+		{
+			"path" : "pages/uvue/icon-x/icon-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "图标"
+			}
+		},
+		{
+			"path" : "pages/uvue/data-picker-x/data-picker-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "级联选择器"
+			}
+		},
+		{
+			"path" : "pages/test/test/test-setup",
+			"style" : 
+			{
+				"navigationBarTitleText" : ""
+			}
 		}
 	],
 	"globalStyle": {

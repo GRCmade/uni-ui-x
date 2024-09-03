@@ -35,16 +35,10 @@
 </script>
 
 <style lang="scss">
-	/* #ifdef APP */
 	.page {
 		background-color: $uni-bg-color-grey;
 	}
-	/* #endif */
-	/* #ifndef APP */
-	page {
-		background-color: $uni-bg-color-grey;
-	}
-	/* #endif */
+
 	.uni-row {
 		flex-direction: row;
 	}

@@ -1,0 +1,17 @@
+<template>
+	<!-- #ifdef APP -->
+	<scroll-view style="flex:1">
+	<!-- #endif -->
+		<uni-section-x title="" type="line"></uni-section-x>
+	<!-- #ifdef APP -->
+	</scroll-view>
+	<!-- #endif -->
+</template>
+
+<script setup>
+		const name = ref<string>("yuhe")
+</script>
+
+<style>
+		
+</style>
