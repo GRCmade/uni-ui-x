@@ -8,6 +8,7 @@
 | uni-data-picker-x | 支持并不好，需要之后重写       |
 | uni-section-x     | 支持                           |
 | uni-list-x        | 部分支持：uni-list-item-x      |
+| uni-card-x        | 支持                           |
 
 
 
