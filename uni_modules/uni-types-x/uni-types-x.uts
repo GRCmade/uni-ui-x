@@ -1,3 +1,6 @@
+// ------ card-x ------ 
+export type UniCardXClickEvent = string
+
 // ------ list-x ------ 
 
 /**
@@ -16,3 +19,4 @@ export type UniListItemXExtraIcon = {
 export type UniListItemXSwitchChangeEvent = {
 	value:Boolean
 }
+

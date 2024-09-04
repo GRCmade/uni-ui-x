@@ -1,29 +1,44 @@
 <template>
-	<view class="home-container">
-		<view class="home-header" @click="click">
-			<image class="home-header__bg" src="../../static/image/uniui-header-bg.png" mode="widthFix"></image>
-			<image class="home-header__logo" src="../../static/image/uniui-logo.png" mode="aspectFit"></image>
-			<view class="home-header__content">
-				<view>
-					<text class="home-header__content-title">兼容web android ios</text>
-				</view>
-				<view>
-					<!-- <text class="home-header__content-subtitle">uni-ui-x 是 DCloud 官方面向uni-app x开发者提供的一套 ui 解决方案</text> -->
+	<!-- #ifdef APP -->
+	<scroll-view style="flex:1">
+	<!-- #endif -->
+		<view class="home-container">
+			<view class="home-header" @click="click">
+				<image class="home-header__bg" src="../../static/image/uniui-header-bg.png" mode="widthFix"></image>
+				<image class="home-header__logo" src="../../static/image/uniui-logo.png" mode="aspectFit"></image>
+				<view class="home-header__content">
+					<view>
+						<text class="home-header__content-title">兼容web android ios</text>
+					</view>
+					<view>
+						<!-- <text class="home-header__content-subtitle">uni-ui-x 是 DCloud 官方面向uni-app x开发者提供的一套 ui 解决方案</text> -->
+					</view>
 				</view>
 			</view>
+			<view class="home-content">
+				<uni-card-x is-shadow padding="0">
+					<uni-section-x title="支持的组件" sub-title="可点击试用" type="line" style="margin-top: 0;">
+						<uni-list-x>
+							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
+								v-for="(layout, index) in support" :key="index" :title="layout.name" link
+								:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
+						</uni-list-x>
+					</uni-section-x>
+					
+					<uni-section-x title="支持不好的组件" sub-title="暂不可用" type="line" style="margin-top: 15px;">
+						<uni-list-x>
+							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
+								v-for="(layout, index) in unsupport" :key="index" :title="layout.name" link
+								:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
+						</uni-list-x>
+					</uni-section-x>
+				</uni-card-x>
+				
+			</view>
 		</view>
-
-		<view class="home-content">
-			<uni-section-x title="辅助样式" sub-title="引入 uni-sass 后通过辅助样式提升快捷布局能力" type="line" style="margin-top: 0;">
-				<uni-list-x>
-					<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
-						v-for="(layout, index) in styles" :key="index" :title="layout.name" link
-						:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
-				</uni-list-x>
-			</uni-section-x>
-		</view>
-	</view>
-
+	<!-- #ifdef APP -->
+	</scroll-view>
+	<!-- #endif -->
 </template>
 <script>
 	type Item = {
@@ -34,23 +49,34 @@
 		components: {},
 		data() {
 			return {
-				styles: [{
+				support: [{
 					name: '图标',
 					url: 'icons-x'
-				}, {
-					name: '及联选择器',
-					url: 'data-picker-x'
-				}, {
+				},{
 					name: '标题栏',
 					url: 'section-x'
 				}, {
 					name: '列表',
 					url: 'list-x'
+				}, {
+					name: '卡片',
+					url: 'card-x'
+				}] as Item[],
+				unsupport: [{
+					name: '及联选择器',
+					url: 'data-picker-x'
 				}] as Item[],
 				platform: 'uvue'
 			}
 		},
 		onLoad() {
+			// this.$nextTick(()=>{
+			// 	uni.navigateTo({
+			// 		url: "/pages/uvue/card-x/card-x"
+			// 		// url: "/pages/test/test/test-setup"
+			// 	})
+			// })
+
 		},
 		methods: {
 			click() {

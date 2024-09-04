@@ -2,7 +2,10 @@
 	<!-- #ifdef APP -->
 	<scroll-view style="flex:1">
 	<!-- #endif -->
-		<text>图标组件方便用户在设计页面的时候，减少小图片的使用。可方便自定义图标单色、尺寸。</text>
+	<view class="page">
+		<uni-card-x>
+			<text>图标组件方便用户在设计页面的时候，减少小图片的使用。可方便自定义图标单色、尺寸。</text>
+		</uni-card-x>
 		<uni-section-x title="图标" type="line">
 			<template v-slot:right>
 				<view>
@@ -17,7 +20,7 @@
 				</view>
 			</view>
 		</uni-section-x>
-
+		
 		<!-- <uni-section-x title="自定义图标" subTitle="引入参考App.vue" type="line">
 			<view class="icon-content">
 				<view class="icon-item" >
@@ -34,6 +37,8 @@
 				</view>
 			</view>
 		</uni-section-x> -->
+	</view>
+	
 		
 	<!-- #ifdef APP -->
 	</scroll-view>

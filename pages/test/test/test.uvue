@@ -2,7 +2,7 @@
 	<!-- #ifdef APP -->
 	<scroll-view style="flex:1">
 	<!-- #endif -->
-		<component></component>
+		<component :one="'yuhe'"></component>
 	<!-- #ifdef APP -->
 	</scroll-view>
 	<!-- #endif -->
@@ -10,6 +10,10 @@
 
 <script setup>
 	import component from './component/component.uvue';
+	// const fun = (test?:string)=>{
+	// 	console.log(test)
+	// }
+	// fun()
 </script>
 
 <style>

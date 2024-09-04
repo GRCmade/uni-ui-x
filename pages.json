@@ -7,60 +7,59 @@
 			}
 		},
 		{
-			"path" : "pages/uvue/section-x/section-x",
-			"style" : 
-			{
-				"navigationBarTitleText" : "section-x 标题栏"
+			"path": "pages/uvue/section-x/section-x",
+			"style": {
+				"navigationBarTitleText": "section-x 标题栏"
 			}
 		},
 		{
-			"path" : "pages/uvue/list-x/list-x",
-			"style" : 
-			{
-				"navigationBarTitleText" : "list-x列表页"
+			"path": "pages/uvue/list-x/list-x",
+			"style": {
+				"navigationBarTitleText": "list-x列表页"
 			}
 		},
 		{
-			"path" : "pages/test/test/test",
-			"style" : 
-			{
-				"navigationBarTitleText" : "测试页面"
+			"path": "pages/test/test/test",
+			"style": {
+				"navigationBarTitleText": "测试页面"
 			}
 		},
 		{
-			"path" : "pages/uvue/list-x/chat-x",
-			"style" : 
-			{
-				"navigationBarTitleText" : "chat页面"
+			"path": "pages/uvue/list-x/chat-x",
+			"style": {
+				"navigationBarTitleText": "chat页面"
 			}
 		},
 		{
-			"path" : "pages/uvue/icon-x/icon-x",
-			"style" : 
-			{
-				"navigationBarTitleText" : "图标"
+			"path": "pages/uvue/icons-x/icons-x",
+			"style": {
+				"navigationBarTitleText": "图标"
 			}
 		},
 		{
-			"path" : "pages/uvue/data-picker-x/data-picker-x",
-			"style" : 
-			{
-				"navigationBarTitleText" : "级联选择器"
+			"path": "pages/uvue/data-picker-x/data-picker-x",
+			"style": {
+				"navigationBarTitleText": "级联选择器"
 			}
 		},
 		{
-			"path" : "pages/test/test/test-setup",
-			"style" : 
-			{
-				"navigationBarTitleText" : ""
+			"path": "pages/test/test/test-setup",
+			"style": {
+				"navigationBarTitleText": ""
+			}
+		},
+		{
+			"path": "pages/uvue/card-x/card-x",
+			"style": {
+				"navigationBarTitleText": "Card 卡片"
 			}
 		}
 	],
 	"globalStyle": {
-		"navigationBarTextStyle": "black",
+		"navigationBarTextStyle": "white",
 		"navigationBarTitleText": "uni-app x",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"navigationBarBackgroundColor": "#007AFF",
+		"backgroundColor": "#f5f5f5"
 	},
 	"uniIdRouter": {}
 }

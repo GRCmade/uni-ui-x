@@ -3,6 +3,9 @@
 	<scroll-view style="flex:1">
 	<!-- #endif -->
 		<view class="page">
+			<uni-card-x>
+				<text> uni-list-x 主要用于以列表形式呈现信息</text>
+			</uni-card-x>
 				<uni-section-x title="基础用法" type="line">
 					<uni-list-x :border="false">
 						<uni-list-item-x title="列表文字" />
