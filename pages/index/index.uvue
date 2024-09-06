@@ -70,12 +70,12 @@
 			}
 		},
 		onLoad() {
-			// this.$nextTick(()=>{
-			// 	uni.navigateTo({
-			// 		url: "/pages/uvue/card-x/card-x"
-			// 		// url: "/pages/test/test/test-setup"
-			// 	})
-			// })
+			this.$nextTick(()=>{
+				uni.navigateTo({
+					url: "/pages/uvue/list-x/list-x"
+					// url: "/pages/test/test/test-setup"
+				})
+			})
 
 		},
 		methods: {

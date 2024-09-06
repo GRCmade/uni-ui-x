@@ -8,15 +8,118 @@ export type UniCardXClickEvent = string
  * 用于 uni-list-item-x 的ExtraIcon的类型
  */
 export type UniListItemXExtraIcon = {
-	type?: string
-	color?: string
-	size?: number
+	type ?: string
+	color ?: string
+	size ?: number
 }
 /**
  * UniListItemXSwitchChangeEvent
  * 用于SwitchChange的返回事件的类型
  */
 export type UniListItemXSwitchChangeEvent = {
-	value:Boolean
+	value : Boolean
+}
+/**
+ * UniListItemX
+ * 用于组件 uni-list-item-x
+ * import { UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+ */
+export type UniListItemX = {
+	/**
+	 * string 排版方向可以取值：row column
+	 */
+	direction ?: string;
+	/**
+	 * string uni-list-item-x的标题
+	 */
+	title ?: string;
+	/**
+	 * string 标题下方的描述
+	 */
+	note ?: string;
+	/**
+	 * ellipsis 控制是否溢出，0是默认，1是显示一行
+	 */
+	ellipsis ?: number;
+	/**
+	 * boolean 是否禁用列表项
+	 */
+	disabled ?: boolean;
+	/**
+	 * boolean 列表项是否允许点击
+	 */
+	clickable ?: boolean;
+	/**
+	 * boolean 是否显示右侧的箭头
+	 */
+	showArrow ?: boolean;
+	/**
+	 * String 可以取值：[navigateTo|redirectTo|reLaunch|switchTab]
+	 * 【不需要开启clickable】
+	 */
+	link ?: string;
+	/**
+	 * String 跳转的页面路径
+	 * 【不需要开启clickable】
+	 */
+	to ?: string;
+	showBadge ?: boolean;
+	/**
+	 * boolean 是否在右侧显示切换按钮
+	 */
+	showSwitch ?: boolean;
+	/**
+	 * boolean Switch的默认值
+	 */
+	switchChecked ?: boolean;
+	badgeText ?: string;
+	badgeType ?: string;
+	/**
+	 * string 右侧的文本
+	 */
+	rightText ?: string;
+	/**
+	 * 图片的路径
+	 */
+	thumb ?: string;
+	/**
+	 * 图片的大小 lg|base|sm
+	 */
+	thumbSize ?: string;
+	/**
+	 * 是否显示扩展图标
+	 */
+	showExtraIcon ?: boolean;
+	/**
+	 * UniListItemXExtraIcon 扩展图标
+	 */
+	extraIcon ?: UniListItemXExtraIcon;
+	border ?: boolean;
 }
 
+export const defaultUniListItemX = {
+  direction: 'row',
+  title: '',
+  note: '',
+  ellipsis: 0,
+  disabled: false,
+  clickable: false,
+  showArrow: false,
+  link: 'navigateTo',
+  to: '',
+  showBadge: false,
+  showSwitch: false,
+  switchChecked: false,
+  badgeText: '',
+  badgeType: 'success',
+  rightText: '',
+  thumb: '',
+  thumbSize: 'base',
+  showExtraIcon: false,
+  extraIcon: {
+    color: '#000',
+    type: 'list',
+    size: 16
+  } as UniListItemXExtraIcon,
+  border: true
+};
