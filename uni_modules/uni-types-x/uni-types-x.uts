@@ -98,28 +98,46 @@ export type UniListItemX = {
 }
 
 export const defaultUniListItemX = {
-  direction: 'row',
-  title: '',
-  note: '',
-  ellipsis: 0,
-  disabled: false,
-  clickable: false,
-  showArrow: false,
-  link: 'navigateTo',
-  to: '',
-  showBadge: false,
-  showSwitch: false,
-  switchChecked: false,
-  badgeText: '',
-  badgeType: 'success',
-  rightText: '',
-  thumb: '',
-  thumbSize: 'base',
-  showExtraIcon: false,
-  extraIcon: {
-    color: '#000',
-    type: 'list',
-    size: 16
-  } as UniListItemXExtraIcon,
-  border: true
+	direction: 'row',
+	title: '',
+	note: '',
+	ellipsis: 0,
+	disabled: false,
+	clickable: false,
+	showArrow: false,
+	link: 'navigateTo',
+	to: '',
+	showBadge: false,
+	showSwitch: false,
+	switchChecked: false,
+	badgeText: '',
+	badgeType: 'success',
+	rightText: '',
+	thumb: '',
+	thumbSize: 'base',
+	showExtraIcon: false,
+	extraIcon: {
+		color: '#000',
+		type: 'list',
+		size: 16
+	} as UniListItemXExtraIcon,
+	border: true
 };
+
+// ------ badge
+
+export type UniBadgeXPositionStyle = {
+	right ?: string
+	left ?: string
+	top ?: string
+	bottom ?: string
+}
+
+
+export type UniBadgeXDotStyle = {
+	width ?: string
+	minWidth ?: string
+	height ?: string
+	padding ?: string
+	borderRadius ?: string
+}

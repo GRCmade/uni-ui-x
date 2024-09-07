@@ -53,6 +53,13 @@
 			"style": {
 				"navigationBarTitleText": "Card 卡片"
 			}
+		},
+		{
+			"path" : "pages/uvue/badge-x/badge-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "角标页"
+			}
 		}
 	],
 	"globalStyle": {

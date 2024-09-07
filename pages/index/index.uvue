@@ -72,7 +72,7 @@
 		onLoad() {
 			this.$nextTick(()=>{
 				uni.navigateTo({
-					url: "/pages/uvue/list-x/list-x"
+					url: "/pages/uvue/badge-x/badge-x"
 					// url: "/pages/test/test/test-setup"
 				})
 			})

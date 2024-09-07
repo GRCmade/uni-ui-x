@@ -2,7 +2,7 @@
 	<view :class="{ 'uni-list-item--disabled': _uix.disabled }"
 		:hover-class="(_uix.clickable === false && !(_uix.link == '')) || _uix.disabled === true || _uix.showSwitch == true ? '' : 'uni-list-item--hover'"
 		class="uni-list-item" @click="onClick">
-		<view v-if="!isFirstChild" :class="{ 'uni-list--border': border }"></view>
+		<view v-if="!isFirstChild" :class="{ 'uni-list--border': _uix.border }"></view>
 		<view class="uni-list-item__container"
 			:class="{ 'container--right': _uix.showArrow === true || _uix.link=='', 'flex--direction': _uix.direction === 'column'}">
 			<view class="uni-list-item__header">
