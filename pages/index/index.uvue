@@ -61,6 +61,9 @@
 				}, {
 					name: '卡片',
 					url: 'card-x'
+				}, {
+					name: '数字角标',
+					url: 'badge-x'
 				}] as Item[],
 				unsupport: [{
 					name: '及联选择器',
@@ -71,10 +74,10 @@
 		},
 		onLoad() {
 			this.$nextTick(()=>{
-				uni.navigateTo({
-					url: "/pages/uvue/badge-x/badge-x"
-					// url: "/pages/test/test/test-setup"
-				})
+				// uni.navigateTo({
+				// 	url: "/pages/uvue/badge-x/badge-x"
+				// 	// url: "/pages/test/test/test-setup"
+				// })
 			})
 
 		},
@@ -145,6 +148,6 @@
 
 	.home-content {
 		margin-top: 170px;
-		overflow: hidden;
+		// overflow: hidden;
 	}
 </style>

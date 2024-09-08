@@ -14,9 +14,9 @@
 					<uni-badge-x class="uni-badge-left-margin" text="45" type="warning" />
 					<uni-badge-x class="uni-badge-left-margin" text="123" type="info" />
 				</view>
-				
+
 			</uni-section-x>
-		<uni-section-x title="无底色" type="line" padding>
+			<uni-section-x title="无底色" type="line" padding>
 				<view class="example-body">
 					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="1" />
 					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="2" type="primary" />
@@ -25,34 +25,48 @@
 					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="123" type="info" />
 				</view>
 			</uni-section-x>
-		
-				<!-- <uni-section-x title="自定义样式" type="line" padding>
+
+			<uni-section-x title="定位: aboslute 属性" type="line" padding>
+				<view class="example-body">
+					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="leftTop">
+						<view class="box"><text class="box-text">左上</text></view>
+					</uni-badge-x>
+					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="rightTop">
+						<view class="box"><text class="box-text">右上</text></view>
+					</uni-badge-x>
+					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="rightBottom">
+						<view class="box"><text class="box-text">右下</text></view>
+					</uni-badge-x>
+					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="leftBottom">
+						<view class="box"><text class="box-text">左下</text></view>
+					</uni-badge-x>
+
+				</view>
+			</uni-section-x>
+
+			<uni-section-x title="仅显示点: is-dot 属性" type="line" padding>
+				<view class="example-body">
+					<uni-badge-x class="uni-badge-left-margin" :isDot="true" text="0" absolute="rightTop">
+						<view class="box"><text class="box-text">圆点</text></view>
+					</uni-badge-x>
+				</view>
+			</uni-section-x>
+
+			<!-- <uni-section-x title="自定义样式" type="line" padding>
 				<view class="example-body">
 					<uni-badge-x class="uni-badge-left-margin" text="2" type="primary"
 						:customStyle="{background: '#4335d6'}" />
 					<uni-badge-x class="uni-badge-left-margin" text="2" type="primary" :customStyle="customStyle" />
 				</view>
 			</uni-section-x> -->
-		
-			<uni-section-x title="定位: aboslute 属性" type="line" padding>
-				<view class="example-body">
-					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="rightTop">
-						<view class="box"><text class="box-text">右上</text></view>
-					</uni-badge-x>
-				</view>
-			
-			</uni-section-x>
-		
-<!-- 			<uni-section-x title="偏移: offset 属性(存在 aboslute)" type="line" padding>
+
+			<!-- 	TODO 暂时不支持offset
+			<uni-section-x title="偏移: offset 属性(存在 aboslute)" type="line" padding>
 				<uni-badge-x class="uni-badge-left-margin" :text="8" absolute="rightTop" :offset="[-3, -3]" size="small">
 					<view class="box"><text class="box-text">右上</text></view>
 				</uni-badge-x>
 			</uni-section-x>
-			<uni-section-x title="仅显示点: is-dot 属性" type="line" padding>
-				<uni-badge-x class="uni-badge-left-margin" :is-dot="true" :text="value" absolute="rightTop" size="small">
-					<view class="box"><text class="box-text">圆点</text></view>
-				</uni-badge-x>
-			</uni-section-x> -->
+				-->
 		</view>
 	<!-- #ifdef APP -->
 	</scroll-view>
@@ -120,4 +134,3 @@
 		font-size: 12px;
 	}
 </style>
-

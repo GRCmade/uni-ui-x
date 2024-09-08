@@ -26,7 +26,8 @@
 				:class="{ 'flex--justify': _uix.direction === 'column' }">
 				<text v-if="_uix.rightText  !== ''" class="uni-list-item__extra-text">{{ _uix.rightText }}</text>
 				<!-- <uni-badge v-if="showBadge" :type="badgeType" :text="badgeText" :custom-style="badgeStyle" /> -->
-				<switch v-if="_uix.showSwitch == true" :disabled="_uix.disabled" :checked="_uix.switchChecked" @change="onSwitchChange" />
+				<switch v-if="_uix.showSwitch == true" :disabled="_uix.disabled" :checked="_uix.switchChecked"
+					@change="onSwitchChange" />
 			</view>
 			<slot name="footer"></slot>
 		</view>
@@ -381,11 +382,12 @@
 		display: flex;
 		// padding: $list-item-pd;
 		// padding-left: $uni-spacing-row-lg;
-		flex: 1;
 		// color: #3b4144;
+		flex: 1;
+
 		overflow: hidden;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: center;
 		overflow: hidden;
 	}
 

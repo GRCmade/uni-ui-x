@@ -1,13 +1,9 @@
 <template>
 	<view class="uni-badge--x">
-		<view class="uni-badge--slot">
-			<slot />
-		</view>
-		<!-- :style="[positionStyle, customStyle, dotStyle]"    -->
+		<slot/>
 		<view class="uni-badge--box" :class="classNames" :style="positionStyle">
 			<text v-if="text" :class="textStyles" class="uni-badge" @click="onClick()">{{displayValue}}</text>
 		</view>
-
 	</view>
 </template>
 
@@ -121,10 +117,10 @@
 					h = 5
 				}
 				// TODO暂时取消this.offset
-				// const _offset = JSON.parseObject(JSON.stringify(this.offset))
-				console.log(this.offset)
-				const x = `${this.offset[0] - w}px`
-				const y = `${this.offset[1] - h}px`
+				// const x = `${this.offset[0] - w}px`
+				// const y = `${this.offset[1] - h}px`
+				const x = '0'
+				const y = '0'
 
 				const whiteList : UniBadgeXPositionStyle[] = [
 					{
@@ -186,13 +182,12 @@
 	$bage-small: scale(0.8);
 
 	.uni-badge--x {
-		// display: inline-block;
 		position: relative;
 		display: flex;
 		flex-direction: row;
 	}
-
-	.uni-badge--absolute {
+	
+	.uni-badge--absolute{
 		position: absolute;
 	}
 
@@ -205,16 +200,13 @@
 	}
 	.uni-badge--box {
 		display: flex;
-		overflow: hidden;
-		box-sizing: border-box;
-		min-width: 20px;
 		justify-content: center;
 		align-items: center;
+		min-width: 20px;
+		overflow: hidden;
 		height: 20px;
 		border-radius: 200px;
 		z-index: 99;
-		// top: 0;
-		// right: 0;
 
 		&--info {
 			background-color: $uni-info;
@@ -243,11 +235,9 @@
 
 	.uni-badge {
 		padding: 0 4px;
-		// color: #fff;
 		line-height: 18px;
 		font-size: $bage-size;
 		/* #ifdef H5 */
-		// z-index: 999;
 		cursor: pointer;
 		/* #endif */
 
