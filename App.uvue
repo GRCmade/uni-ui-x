@@ -39,11 +39,11 @@
 		background-color: $uni-bg-color-grey;
 	}
 
-	.uni-row {
-		flex-direction: row;
-	}
+	// .uni-row {
+	// 	flex-direction: row;
+	// }
 
-	.uni-column {
-		flex-direction: column;
-	}
+	// .uni-column {
+	// 	flex-direction: column;
+	// }
 </style>

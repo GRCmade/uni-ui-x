@@ -64,6 +64,9 @@
 				}, {
 					name: '数字角标',
 					url: 'badge-x'
+				}, {
+					name: '面包屑',
+					url: 'breadcrumb-x'
 				}] as Item[],
 				unsupport: [{
 					name: '及联选择器',
@@ -73,12 +76,12 @@
 			}
 		},
 		onLoad() {
-			this.$nextTick(()=>{
-				// uni.navigateTo({
-				// 	url: "/pages/uvue/badge-x/badge-x"
-				// 	// url: "/pages/test/test/test-setup"
-				// })
-			})
+			// this.$nextTick(()=>{
+			// 	uni.navigateTo({
+			// 		url: "/pages/uvue/breadcrumb-x/breadcrumb-x"
+			// 		// url: "/pages/test/test/test-setup"
+			// 	})
+			// })
 
 		},
 		methods: {

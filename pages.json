@@ -60,6 +60,13 @@
 			{
 				"navigationBarTitleText" : "角标页"
 			}
+		},
+		{
+			"path" : "pages/uvue/breadcrumb-x/breadcrumb-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "面包屑"
+			}
 		}
 	],
 	"globalStyle": {

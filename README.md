@@ -9,6 +9,8 @@
 | uni-section-x     | 支持                           |
 | uni-list-x        | 部分支持：uni-list-item-x      |
 | uni-card-x        | 支持                           |
+| uni-badge-x        | 支持             |
+| uni-breadcrumb-x      | 支持             |
 
 
 
@@ -16,7 +18,7 @@
 
 主要的区别如下所示：
 - 组件名称发生变化
-- 样式无法继承
+- 样式无法继承，注意default的slot区别较大
 - 传入的参数类型必须是确定的
 - 【重要】提供了一种全新的使用组件的方式：数据绑定式引入
 

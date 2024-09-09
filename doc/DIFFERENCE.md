@@ -6,7 +6,7 @@ uni-ui-x由于受写法限制，API支持情况等相关问题，与uni-ui有部
 在uni-ui-x中，组件的名称都是已-x结尾，例如：`uni-list-x`
 
 
-### 2. 样式无法继承
+### 2. 样式无法继承，注意default处的slot区别较大
 
 在uniappx中，样式是不会继承的，详细可见：[样式不继承](https://doc.dcloud.net.cn/uni-app-x/css/#stylenoextends)。
 
@@ -16,6 +16,11 @@ uni-ui-x由于受写法限制，API支持情况等相关问题，与uni-ui有部
 - 在`uni-card`中，默认插槽在uni-ui中会默认给文字添加一个`#3a3a3a`的颜色，但是在uni-ui-x中不会继承这个颜色
 
 在uni-ui-x中类似的位置将不会有相似的修改，需要开发者自己控制插槽样式。
+
+当前存在这种问题的组件：
+- section
+- list-item
+- breadcrumb
 
 ### 3.传入的参数类型必须是确定的
 

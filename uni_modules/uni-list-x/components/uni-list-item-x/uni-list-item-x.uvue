@@ -235,7 +235,7 @@
 				this.$emit('switchChange', event);
 			},
 			openPage() : void {
-				const index = ['navigateTo', 'redirectTo', 'reLaunch', 'switchTab'].indexOf(this._uix.link)
+				const index = ['navigateTo', 'redirectTo', 'reLaunch', 'switchTab'].indexOf(this._uix.link as string)
 				if (index != -1) {
 					this.pageApi(this._uix.link);
 				} else {

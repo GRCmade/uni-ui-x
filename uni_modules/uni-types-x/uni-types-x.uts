@@ -141,3 +141,19 @@ export type UniBadgeXDotStyle = {
 	padding ?: string
 	borderRadius ?: string
 }
+
+
+// ----------- breadcrumb
+/**
+ * BreadcrumbItemX
+ * 面包屑项的类型
+ */
+export type BreadcrumbItemX = {
+	to ?:string
+	name ?:string
+}
+
+export const defaultBreadcrumbItemX:BreadcrumbItemX = {
+	to:'',
+	name:''
+}
