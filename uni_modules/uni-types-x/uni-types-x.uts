@@ -157,3 +157,29 @@ export const defaultBreadcrumbItemX:BreadcrumbItemX = {
 	to:'',
 	name:''
 }
+
+
+// -------------- fab-x
+export type UniFabX = {
+	
+}
+
+/**
+ * UniFabXContentItem
+ * 用于uni-fab-x的content
+ */
+export type UniFabXContentItem = {
+	iconPath:string
+	selectedIconPath:string
+	text:string
+	active:boolean
+}
+
+export type UniFabXPattern = {
+	color?:string
+	selectedColor?:string
+	backgroundColor?:string
+	buttonColor?:string
+	iconColor?:string
+	icon?:string
+}

@@ -67,6 +67,13 @@
 			{
 				"navigationBarTitleText" : "面包屑"
 			}
+		},
+		{
+			"path" : "pages/uvue/fab-x/fab-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "Fab悬浮按钮"
+			}
 		}
 	],
 	"globalStyle": {

@@ -17,6 +17,14 @@
 			</view>
 			<view class="home-content">
 				<uni-card-x is-shadow padding="0">
+					<uni-section-x title="基础组件" sub-title="封装常用功能的组件" type="line" style="margin-top: 0;">
+						<uni-list-x>
+							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
+								v-for="(layout, index) in views" :key="index" :title="layout.name" link
+								:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
+						</uni-list-x>
+					</uni-section-x>
+					
 					<uni-section-x title="支持的组件" sub-title="可点击试用" type="line" style="margin-top: 0;">
 						<uni-list-x>
 							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
@@ -24,7 +32,7 @@
 								:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
 						</uni-list-x>
 					</uni-section-x>
-					
+
 					<uni-section-x title="支持不好的组件" sub-title="暂不可用" type="line" style="margin-top: 15px;">
 						<uni-list-x>
 							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
@@ -33,7 +41,7 @@
 						</uni-list-x>
 					</uni-section-x>
 				</uni-card-x>
-				
+
 			</view>
 		</view>
 	<!-- #ifdef APP -->
@@ -49,10 +57,17 @@
 		components: {},
 		data() {
 			return {
-				support: [{
+				views: [{
+					name: '数字角标',
+					url: 'badge-x'
+				}, {
 					name: '图标',
 					url: 'icons-x'
-				},{
+				}, {
+					name: '悬浮按钮',
+					url: 'fab-x'
+				}] as Item[],
+				support: [{
 					name: '标题栏',
 					url: 'section-x'
 				}, {
@@ -61,9 +76,6 @@
 				}, {
 					name: '卡片',
 					url: 'card-x'
-				}, {
-					name: '数字角标',
-					url: 'badge-x'
 				}, {
 					name: '面包屑',
 					url: 'breadcrumb-x'
@@ -78,11 +90,10 @@
 		onLoad() {
 			// this.$nextTick(()=>{
 			// 	uni.navigateTo({
-			// 		url: "/pages/uvue/breadcrumb-x/breadcrumb-x"
+			// 		url: "/pages/uvue/fab-x/fab-x"
 			// 		// url: "/pages/test/test/test-setup"
 			// 	})
 			// })
-
 		},
 		methods: {
 			click() {
