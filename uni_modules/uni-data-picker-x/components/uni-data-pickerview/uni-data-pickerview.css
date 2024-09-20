@@ -57,7 +57,7 @@
 }
 
 .item-text-disabled {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .item-text-overflow {

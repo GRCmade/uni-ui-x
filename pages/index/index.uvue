@@ -24,7 +24,7 @@
 								:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
 						</uni-list-x>
 					</uni-section-x>
-					
+
 					<uni-section-x title="支持的组件" sub-title="可点击试用" type="line" style="margin-top: 0;">
 						<uni-list-x>
 							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
@@ -66,6 +66,9 @@
 				}, {
 					name: '悬浮按钮',
 					url: 'fab-x'
+				}, {
+					name: '收藏按钮',
+					url: 'fav-x'
 				}] as Item[],
 				support: [{
 					name: '标题栏',
@@ -88,12 +91,12 @@
 			}
 		},
 		onLoad() {
-			// this.$nextTick(()=>{
-			// 	uni.navigateTo({
-			// 		url: "/pages/uvue/fab-x/fab-x"
-			// 		// url: "/pages/test/test/test-setup"
-			// 	})
-			// })
+			this.$nextTick(()=>{
+				uni.navigateTo({
+					url: "/pages/uvue/fav-x/fav-x"
+					// url: "/pages/test/test/test-setup"
+				})
+			})
 		},
 		methods: {
 			click() {

@@ -143,7 +143,7 @@
 		overflow: hidden;
 		// font-family: Helvetica Neue, Helvetica, PingFang SC, Hiragino Sans GB, Microsoft YaHei, SimSun, sans-serif;
 		background-color: #fff;
-		flex: 1;
+		// flex: 1;
 
 		.uni-card__cover {
 			// position: relative;

@@ -1,7 +1,7 @@
 <template>
-	<view class="">
-		<image src="https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/094a9dc0-50c0-11eb-b680-7980c8a877b8.jpg" mode="" ></image>
-	</view>
+	<uni-card-x>
+		12312
+	</uni-card-x>
 </template>
 
 <script setup>

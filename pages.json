@@ -74,6 +74,13 @@
 			{
 				"navigationBarTitleText" : "Fab悬浮按钮"
 			}
+		},
+		{
+			"path" : "pages/uvue/fav-x/fav-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "Fav收藏"
+			}
 		}
 	],
 	"globalStyle": {

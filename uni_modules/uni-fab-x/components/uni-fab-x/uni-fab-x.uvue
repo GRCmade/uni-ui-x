@@ -403,7 +403,7 @@
 	.fab-circle-icon {
 		transform: rotate(0deg);
 		transition: transform 0.3s;
-		font-weight: 200;
+		font-weight: 400;
 	}
 
 	.uni-fab__plus--active {

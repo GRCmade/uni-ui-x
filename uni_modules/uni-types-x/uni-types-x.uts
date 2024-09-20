@@ -160,9 +160,7 @@ export const defaultBreadcrumbItemX:BreadcrumbItemX = {
 
 
 // -------------- fab-x
-export type UniFabX = {
-	
-}
+export type UniFabX = {}
 
 /**
  * UniFabXContentItem
@@ -182,4 +180,37 @@ export type UniFabXPattern = {
 	buttonColor?:string
 	iconColor?:string
 	icon?:string
+}
+
+
+// -------- fav
+
+export type UniFavXContentText = {
+	contentDefault:string
+	contentFav:string
+}
+
+export type UniFavX = {
+	star?:boolean
+	bgColor?:string
+	bgColorChecked?:string
+	fgColor?:string
+	fgColorChecked?:string
+	circle?:boolean
+	checked?:boolean
+	contentText?:UniFavXContentText
+}
+
+export const defaultUniFavX:UniFavX = {
+	star:true,
+	bgColor:"#eeeeee",
+	bgColorChecked:'#007aff',
+	fgColor:"#666666",
+	fgColorChecked:"#FFFFFF",
+	circle:false,
+	checked:false,
+	contentText:{
+		contentDefault:"收藏",
+		contentFav:"已收藏"
+	} as UniFavXContentText
 }
