@@ -13,6 +13,7 @@
 | uni-breadcrumb-x| 支持	|
 | uni-fab-x| 支持	|
 | uni-fav-x| 支持	|
+| uni-notice-bar-x| 支持	|
 
 
 

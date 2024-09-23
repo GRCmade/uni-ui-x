@@ -58,17 +58,20 @@
 		data() {
 			return {
 				views: [{
-					name: '数字角标',
+					name: 'BadgeX 数字角标',
 					url: 'badge-x'
 				}, {
-					name: '图标',
+					name: 'IconX 图标',
 					url: 'icons-x'
 				}, {
-					name: '悬浮按钮',
+					name: 'FabX 悬浮按钮',
 					url: 'fab-x'
 				}, {
-					name: '收藏按钮',
+					name: 'FavX 收藏按钮',
 					url: 'fav-x'
+				}, {
+					name: 'NoticeBarX 通告栏',
+					url: 'notice-bar-x'
 				}] as Item[],
 				support: [{
 					name: '标题栏',
@@ -91,12 +94,12 @@
 			}
 		},
 		onLoad() {
-			this.$nextTick(()=>{
-				uni.navigateTo({
-					url: "/pages/uvue/fav-x/fav-x"
-					// url: "/pages/test/test/test-setup"
-				})
-			})
+			// this.$nextTick(()=>{
+			// 	uni.navigateTo({
+			// 		url: "/pages/uvue/notice-bar-x/notice-bar-x"
+			// 		// url: "/pages/test/test/test-setup"
+			// 	})
+			// })
 		},
 		methods: {
 			click() {

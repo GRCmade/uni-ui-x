@@ -81,6 +81,13 @@
 			{
 				"navigationBarTitleText" : "Fav收藏"
 			}
+		},
+		{
+			"path" : "pages/uvue/notice-bar-x/notice-bar-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "NoticeBarX 通告栏"
+			}
 		}
 	],
 	"globalStyle": {
