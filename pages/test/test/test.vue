@@ -1,0 +1,35 @@
+<template>
+	<!-- #ifdef APP -->
+	<scroll-view style="flex:1">
+	<!-- #endif -->
+		<uni-list-x>
+			<uni-list-item-x :uix="uix"></uni-list-item-x>
+				<uni-list-item-x :thumb="uix.thumb" :thumbSize="uix.thumbSize" :title="uix.title" :note="uix.note" :rightText="uix.rightText" showArrow ></uni-list-item-x>
+		</uni-list-x>
+	<!-- #ifdef APP -->
+	</scroll-view>
+	<!-- #endif -->
+</template>
+
+<script lang="uts">
+	import { UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	export default {
+		data() {
+			return {
+				uix: {
+					title: "列表标题",
+					note: "列表描述信息",
+					rightText: "右侧文字",
+					thumbSize: "lg",
+					thumb: "https://vkceyugu.cdn.bspapp.com/VKCEYUGU-dc-site/460d46d0-4fcc-11eb-8ff1-d5dcf8779628.png",
+					showArrow: true,
+					direction:"column"
+				} as UniListItemX
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

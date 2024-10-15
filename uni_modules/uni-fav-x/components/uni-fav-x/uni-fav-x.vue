@@ -8,7 +8,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	import { UniFavXContentText, defaultUniFavX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * Fav 收藏按钮

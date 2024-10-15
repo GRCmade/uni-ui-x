@@ -1,0 +1,172 @@
+<template>
+	<!-- #ifdef APP -->
+	<scroll-view style="flex:1">
+	<!-- #endif -->
+		<view class="container">
+			<text >标签组件多用于商品分类、重点内容显示等场景。</text>
+		
+		<!-- 	<uni-section-x title="本地数据" type="line">
+				<view>
+					<uni-data-picker-x
+						placeholder="请选择班级"
+						popup-title="请选择"
+						:localdata="classDataTree"
+						v-model="classValue"
+						@change="onchange"
+						@nodeclick="onnodeclick"
+						@popupopened="onpopupopened"
+						@popupclosed="onpopupclosed"
+						@inputclick="inputclick"
+					></uni-data-picker-x>
+				</view>
+			</uni-section-x> -->
+			
+			
+			<!-- <uni-section-x title="自定义插槽" type="line">
+				<view>
+					<uni-data-picker-x v-slot:default="{ data, error, options }" title="请选择" :localdata="classDataTree" v-model="classValue">
+						<view class="input-border">
+							<view v-if="error" class="error">
+								<text>{{ error }}</text>
+							</view>
+							<view v-else-if="data.length" class="input-selected">
+								<view v-for="(item, index) in data" :key="index" class="selected-item">
+									<text>{{ item.text }}</text>
+								</view>
+							</view>
+							<view v-else><text>请选择</text></view>
+						</view>
+					</uni-data-picker-x>
+				</view>
+			</uni-section-x> -->
+			
+			
+			<!-- <view class="title">
+		    <text>Cloud 数据 (单例)</text>
+		  </view>
+		  <uni-data-picker v-model="nation" collection="opendb-nation-china" field="name as value, name as text"
+		    @nodeclick="onnodeclick" @change="onchange" @popupopened="onpopupopened" @popupclosed="onpopupclosed">
+		  </uni-data-picker>
+		
+		  <view class="title">
+		    <text>Cloud 数据 (树形)</text>
+		  </view>
+		  <uni-data-picker placeholder="请选择地址" popup-title="请选择所在地区" :preload="true" :step-searh="true" self-field="code"
+		    parent-field="parent_code" collection="opendb-city-china" orderby="value asc"
+		    field="code as value, name as text, eq(type, 2) as isleaf" v-model="address" @nodeclick="onnodeclick"
+		    @change="onchange" @popupopened="onpopupopened" @popupclosed="onpopupclosed">
+		  </uni-data-picker>
+		
+		  <view class="title">
+		    <text>uni-data-pickerview</text>
+		  </view>
+		  <uni-data-pickerview class="data-pickerview" :preload="true" :step-searh="true" self-field="code"
+		    parent-field="parent_code" collection="opendb-city-china" orderby="value asc" field="code as value, name as text">
+		  </uni-data-pickerview> -->
+		</view>
+	<!-- #ifdef APP -->
+	</scroll-view>
+	<!-- #endif -->
+</template>
+
+<script lang="uts">
+export default {
+	data() {
+		return {
+			nation: '汉族',
+			address: '110101',
+			// map: {
+			//   text: "label",
+			//   value: "value"
+			// },
+			classValue: '1-2',
+			classDataTree: [
+				{
+					text: '一年级',
+					value: '1-0',
+					children: [
+						{
+							text: '1.1班',
+							value: '1-1'
+						},
+						{
+							text: '1.2班',
+							value: '1-2'
+						}
+					]
+				},
+				{
+					text: '二年级',
+					value: '2-0',
+					children: [
+						{
+							text: '2.1班',
+							value: '2-1'
+						},
+						{
+							text: '2.2班',
+							value: '2-2'
+						}
+					]
+				},
+				{
+					text: '三年级',
+					value: '3-0',
+					disable: true
+				}
+			]
+		};
+	},
+	methods: {
+		onnodeclick(e:any) {
+			console.log('nodeclick', e);
+		},
+		onpopupopened(e:any) {
+			console.log('onpopupopened');
+		},
+		onpopupclosed(e:any) {
+			console.log('onpopupclosed');
+		},
+		onchange(e:any) {
+			// console.log('onchange', e.detail.value);
+		},
+		inputclick(e:any){
+			console.log('inputclick');
+		}
+	}
+};
+</script>
+
+<style>
+.container {
+	display: flex;
+	max-width: 500px;
+	flex-direction: column;
+}
+
+.title {
+	font-size: 14px;
+	font-weight: bold;
+	margin: 20px 0 5px 0;
+}
+
+.input-border {
+	border: 1px solid #b3e5fc;
+	border-radius: 5px;
+	padding: 2px 4px;
+}
+
+.input-selected {
+	display: flex;
+	flex-direction: row;
+	line-height: 2;
+}
+
+.data-pickerview {
+	height: 300px;
+	border: 1px solid #e5e5e5;
+	border-radius: 5px;
+	overflow: hidden;
+}
+</style>
+

@@ -37,7 +37,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	// #ifdef APP-NVUE
 	const dom = weex.requireModule('dom');
 	const animation = weex.requireModule('animation');

@@ -3,26 +3,26 @@
 		<view class="uni-section-header" @click="onClick">
 			<view class="uni-section-header__decoration" v-if="type" :class="type" />
 			<slot v-else name="decoration"></slot>
-			
+
 			<view class="uni-section-header__content">
 				<text class="uni-section-header__content-color"
 					:style="{'font-size':titleFontSize,'color':titleColor}">{{ title }}</text>
 				<text v-if="subTitle" :style="{'font-size':subTitleFontSize,'color':subTitleColor}"
 					class="uni-section-header__content-sub uni-section-header__content-color">{{ subTitle }}</text>
 			</view>
-			
+
 			<view>
 				<slot name="right"></slot>
 			</view>
 		</view>
-		
+
 		<view :style="{padding: padding}">
 			<slot />
 		</view>
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	/**
 	 * SectionX 标题栏
 	 * @description 标题栏 相关类型：无

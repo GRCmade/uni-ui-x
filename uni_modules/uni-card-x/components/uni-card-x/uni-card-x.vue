@@ -35,7 +35,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * Card 卡片 

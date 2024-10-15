@@ -1,0 +1,18 @@
+export type ClassNames = String[]
+
+
+export type PositionStyle = {
+	top ?: string,
+	left ?: string,
+	bottom ?: string,
+	right ?: string,
+}
+
+
+export type DotStyle = {
+	width : string,
+	minWidth : string,
+	height : string,
+	padding : string,
+	borderRadius : string,
+}

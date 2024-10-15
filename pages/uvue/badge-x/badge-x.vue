@@ -75,7 +75,7 @@
 </template>
 
 
-<script>
+<script lang="uts">
 	export default {
 		components: {},
 		data() {

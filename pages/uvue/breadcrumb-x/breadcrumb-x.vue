@@ -1,0 +1,53 @@
+<template>
+	<!-- #ifdef APP -->
+	<scroll-view style="flex:1">
+	<!-- #endif -->
+		<view class="container">
+			<uni-card-x is-full :is-shadow="false">
+				<text>面包屑导航显示当前页面的路径，快速返回之前的任意可跳转页面</text>
+			</uni-card-x>
+			<uni-section-x title="基础用法" type="line" padding>
+				<uni-breadcrumb-x separator="/">
+					<uni-breadcrumb-item-x v-for="(route,index) in routes" :key="index" :to="route.to" :name="route.name" />
+				</uni-breadcrumb-x>
+			</uni-section-x>
+			<uni-section-x title="自定义分隔符" type="line" padding>
+				<uni-breadcrumb-x separator=">">
+					<uni-breadcrumb-item-x v-for="(route,index) in routes" :key="index" :to="route.to" :name="route.name" />
+				</uni-breadcrumb-x>
+			</uni-section-x>
+		</view>
+	<!-- #ifdef APP -->
+	</scroll-view>
+	<!-- #endif -->
+</template>
+<script lang="uts">
+	import { BreadcrumbItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	export default {
+		components: {},
+		data() {
+			return {
+				routes: [{
+					to: '/pages/index/index',
+					name: '首页'
+				}, {
+					to: '',
+					name: '菜单 A'
+				}, {
+					to: '',
+					name: '菜单 B'
+				}] as BreadcrumbItemX[]
+			};
+		},
+	};
+</script>
+
+<style lang="scss">
+	.uni-breadcrumb-item--slot-link {
+		color: #3a3a3a;
+		font-weight: bold;
+	}
+	.uni-breadcrumb-item-default{
+		color: #6a6a6a;
+	}
+</style>

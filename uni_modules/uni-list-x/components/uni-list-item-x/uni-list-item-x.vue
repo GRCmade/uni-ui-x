@@ -35,7 +35,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	import { UniListItemXExtraIcon, UniListItemXSwitchChangeEvent, UniListItemX, defaultUniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * ListItem 列表子组件
@@ -171,6 +171,7 @@
 			_uix() : UniListItemX {
 				let defaulTest : UniListItemX = {}
 				let utsDefault : UTSJSONObject = defaultUniListItemX
+				// #ifdef UNI-APP-X
 				UTSJSONObject.keys(utsDefault).forEach((item, index) => {
 					let temp : any | null
 					if (this.uix[item] != null) {
@@ -182,6 +183,21 @@
 					}
 					defaulTest[item] = temp
 				})
+				// #endif
+
+				// #ifndef UNI-APP-X
+				Object.keys(utsDefault).forEach((item, index) => {
+					let temp : any | null
+					if (this.uix[item] != null) {
+						temp = this.uix[item]
+					} else if (this.$props[item] != utsDefault[item]) {
+						temp = this.$props[item]
+					} else {
+						temp = utsDefault[item]
+					}
+					defaulTest[item] = temp
+				})
+				// #endif
 				return defaulTest
 			}
 		},
@@ -418,8 +434,8 @@
 
 	.uni-list-item__header {
 		display: flex;
+		flex-direction: column;
 		justify-content: center;
-		// align-items: center;
 	}
 
 	.uni-list-item__icon {

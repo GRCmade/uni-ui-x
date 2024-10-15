@@ -49,7 +49,7 @@
 	</scroll-view>
 	<!-- #endif -->
 </template>
-<script>
+<script lang="uts">
 	type Item = {
 		name : string
 		url : string

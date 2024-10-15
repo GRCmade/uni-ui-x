@@ -1,12 +1,14 @@
 <template>
 	<view class="uni-badge--x">
-		<slot />
-		<text v-if="text" :class="classNames" :style="[positionStyle, customStyle, dotStyle]"
-			class="uni-badge" @click="onClick()">{{displayValue}}</text>
+		<slot/>
+		<view class="uni-badge--box" :class="classNames" :style="positionStyle">
+			<text v-if="text" :class="textStyles" class="uni-badge" @click="onClick()">{{displayValue}}</text>
+		</view>
 	</view>
 </template>
 
-<script>
+<script lang="uts">
+	import { UniBadgeXPositionStyle, UniBadgeXDotStyle } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * Badge 数字角标
 	 * @description 数字角标一般和其它控件（列表、9宫格等）配合使用，用于进行数量提示，默认为实心灰色背景
@@ -57,96 +59,107 @@
 				default: ''
 			},
 			offset: {
-				type: Array,
-				default () {
-					return [0, 0]
-				}
+				type: Array as PropType<number[]>,
+				default: [0, 0]
 			},
 			text: {
-				type: [String, Number],
+				type: String,
 				default: ''
 			},
 			size: {
 				type: String,
 				default: 'small'
 			},
-			customStyle: {
-				type: Object,
-				default () {
-					return {}
-				}
-			}
+			// TODO 暂时取消custmStyle
+			// customStyle: {
+			// 	type: Object,
+			// 	default() {
+			// 		return {}
+			// 	}
+			// }
 		},
 		data() {
 			return {};
 		},
 		computed: {
-			width() {
-				return String(this.text).length * 8 + 12
+			width() : number {
+				return this.text.length * 8 + 12
 			},
-			classNames() {
+			textStyles() : string {
 				const {
 					inverted,
-					type,
-					size,
-					absolute
+					type
 				} = this
 				return [
-					inverted ? 'uni-badge--' + type + '-inverted' : '',
-					'uni-badge--' + type,
-					'uni-badge--' + size,
-					absolute ? 'uni-badge--absolute' : ''
+					inverted == true ? 'uni-badge--' + type + '-inverted' : 'uni-badge-text-color',
 				].join(' ')
 			},
-			positionStyle() {
-				if (!this.absolute) return {}
-				let w = this.width / 2,
-					h = 10
-				if (this.isDot) {
+			classNames() : string {
+				const {
+					size,
+					absolute,
+					inverted,
+					type
+				} = this
+
+				return [
+					inverted == false ? 'uni-badge--box--' + type : '',
+					'uni-badge--' + size,
+					absolute != '' ? 'uni-badge--absolute' : ''
+				].join(' ')
+			},
+			positionStyle() : UTSJSONObject {
+				if (this.absolute == '') return {}
+				let w:number = this.width / 2
+				let h:number = 10
+				if (this.isDot == true) {
 					w = 5
 					h = 5
 				}
-				const x = `${- w  + this.offset[0]}px`
-				const y = `${- h + this.offset[1]}px`
+				// TODO暂时取消this.offset
+				// const x = `${this.offset[0] - w}px`
+				// const y = `${this.offset[1] - h}px`
+				const x = '0'
+				const y = '0'
 
-				const whiteList = {
-					rightTop: {
+				const whiteList : UniBadgeXPositionStyle[] = [
+					{
 						right: x,
 						top: y
-					},
-					rightBottom: {
+					}, {
 						right: x,
 						bottom: y
-					},
-					leftBottom: {
+					}, {
 						left: x,
 						bottom: y
-					},
-					leftTop: {
+					}, {
 						left: x,
 						top: y
 					}
-				}
-				const match = whiteList[this.absolute]
-				return match ? match : whiteList['rightTop']
+				]
+				let num : number = ["rightTop", "rightBottom", "leftBottom", "leftTop"].indexOf(this.absolute)
+				let utsJsonA = JSON.parseObject(JSON.stringify(whiteList[num >= 0 ? num : 0]))
+				return utsJsonA as UTSJSONObject
 			},
-			dotStyle() {
-				if (!this.isDot) return {}
+			dotStyle() : UniBadgeXDotStyle {
+				if (this.isDot == false) {
+					return {} as UniBadgeXDotStyle
+				}
 				return {
 					width: '10px',
 					minWidth: '0',
 					height: '10px',
 					padding: '0',
 					borderRadius: '10px'
-				}
+				} as UniBadgeXDotStyle
 			},
-			displayValue() {
+			displayValue() : string {
 				const {
 					isDot,
 					text,
 					maxNum
 				} = this
-				return isDot ? '' : (Number(text) > maxNum ? `${maxNum}+` : text)
+				return isDot ? '' : (parseInt(text) > maxNum ? `${maxNum}+` : text)
 			}
 		},
 		methods: {
@@ -157,7 +170,7 @@
 	};
 </script>
 
-<style lang="scss" >
+<style lang="scss">
 	$uni-primary: #2979ff !default;
 	$uni-success: #4cd964 !default;
 	$uni-warning: #f0ad4e !default;
@@ -169,16 +182,12 @@
 	$bage-small: scale(0.8);
 
 	.uni-badge--x {
-		/* #ifdef APP-NVUE */
-		// align-self: flex-start;
-		/* #endif */
-		/* #ifndef APP-NVUE */
-		display: inline-block;
-		/* #endif */
 		position: relative;
+		display: flex;
+		flex-direction: row;
 	}
-
-	.uni-badge--absolute {
+	
+	.uni-badge--absolute{
 		position: absolute;
 	}
 
@@ -186,35 +195,20 @@
 		transform: $bage-small;
 		transform-origin: center center;
 	}
-
-	.uni-badge {
-		/* #ifndef APP-NVUE */
+	.uni-badge--slot{
+		z-index: 10;
+	}
+	.uni-badge--box {
 		display: flex;
-		overflow: hidden;
-		box-sizing: border-box;
-		font-feature-settings: "tnum";
-		min-width: 20px;
-		/* #endif */
 		justify-content: center;
-		flex-direction: row;
+		align-items: center;
+		min-width: 20px;
+		overflow: hidden;
 		height: 20px;
-		padding: 0 4px;
-		line-height: 18px;
-		color: #fff;
-		border-radius: 100px;
-		background-color: $uni-info;
-		background-color: transparent;
-		border: 1px solid #fff;
-		text-align: center;
-		font-family: 'Helvetica Neue', Helvetica, sans-serif;
-		font-size: $bage-size;
-		/* #ifdef H5 */
-		z-index: 999;
-		cursor: pointer;
-		/* #endif */
+		border-radius: 200px;
+		z-index: 99;
 
 		&--info {
-			color: #fff;
 			background-color: $uni-info;
 		}
 
@@ -233,6 +227,20 @@
 		&--error {
 			background-color: $uni-error;
 		}
+	}
+
+	.uni-badge-text-color {
+		color: #fff;
+	}
+
+	.uni-badge {
+		padding: 0 4px;
+		line-height: 18px;
+		font-size: $bage-size;
+		/* #ifdef H5 */
+		cursor: pointer;
+		/* #endif */
+
 
 		&--inverted {
 			padding: 0 5px 0 0;
