@@ -11,7 +11,7 @@
 					<uni-list-item-x title="列表文字" />
 					<uni-list-item-x title="列表文字" rightText="右侧文字" />
 					<uni-list-item-x title="列表文字" note="列表描述信息" rightText="右侧文字" />
-					<uni-list-item-x :uix="uixTitle" title="yuhe"/>
+					<uni-list-item-x :uix="uixTitle" title="important"/>
 				</uni-list-x>
 			</uni-section-x>
 			<uni-section-x title="禁用列表" type="line">
@@ -152,7 +152,7 @@
 						color: '#4cd964',
 						size: 22,
 						type: 'gear-filled'
-					} as UniListItemXExtraIcon,
+					},
 					showArrow:true,
 					direction:"row"
 				} as UniListItemX,

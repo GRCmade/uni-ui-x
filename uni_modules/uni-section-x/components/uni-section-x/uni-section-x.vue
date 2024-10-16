@@ -22,7 +22,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	/**
 	 * SectionX 标题栏
 	 * @description 标题栏 相关类型：无

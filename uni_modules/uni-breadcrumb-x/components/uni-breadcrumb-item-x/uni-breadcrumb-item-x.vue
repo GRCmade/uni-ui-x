@@ -9,7 +9,7 @@
 		<text class="uni-breadcrumb-item--separator">{{ separator }}</text>
 	</view>
 </template>
-<script>
+<script lang="uts">
 	/**
 	 * BreadcrumbItem 面包屑导航子组件
 	 * @property {String/Object} to 路由跳转页面路径/对象
@@ -36,16 +36,27 @@
 			}
 		},
 		created() {
-			const pages : Array<Page> = getCurrentPages()
-			const page : Page = pages[pages.length - 1]
+			const pages : Array<UniPage> = getCurrentPages()
+			const page : UniPage = pages[pages.length - 1]
 
 			if (page.route != '') {
 				this.currentPage = `/${page.route}`
 			}
 		},
+		inject: {
+			uniBreadcrumb: {
+				from: "uniBreadcrumb",
+				default: null
+			}
+		},
 		computed: {
 			separator() : string {
+				// #ifdef UNI-APP-X
 				return this.$parent?.$callMethod('getSeparator') as string
+				// #endif
+				// #ifndef UNI-APP-X
+				return this.uniBreadcrumb.separator
+				// #endif
 			}
 		},
 		methods: {

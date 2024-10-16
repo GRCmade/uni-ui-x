@@ -3,7 +3,7 @@
 		<slot />
 	</view>
 </template>
-<script>
+<script lang="uts">
 	/**
 	 * Breadcrumb 面包屑导航父组件
 	 * @description 显示当前页面的路径，快速返回之前的任意页面
@@ -15,6 +15,11 @@
 			separator: {
 				type: String,
 				default: '/'
+			}
+		},
+		provide() {
+			return {
+				uniBreadcrumb: this
 			}
 		},
 		methods:{

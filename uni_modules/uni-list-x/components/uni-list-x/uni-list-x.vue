@@ -6,7 +6,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	/**
 	 * List 列表
 	 * @description 列表组件

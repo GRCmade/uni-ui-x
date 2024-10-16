@@ -35,7 +35,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * Card 卡片 
@@ -153,6 +153,7 @@
 			border-radius: 4px;
 			.uni-card__cover-image {
 				flex: 1;
+				width: 100%;
 				// vertical-align: middle;
 			}
 		}

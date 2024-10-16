@@ -1,41 +1,42 @@
 <template>
-	<view :class="{ 'uni-list-item--disabled': disabled }"
-		:hover-class="(!clickable && !(link == '')) || disabled || showSwitch ? '' : 'uni-list-item--hover'"
+	<view :class="{ 'uni-list-item--disabled': _uix.disabled }"
+		:hover-class="(_uix.clickable === false && !(_uix.link == '')) || _uix.disabled === true || _uix.showSwitch == true ? '' : 'uni-list-item--hover'"
 		class="uni-list-item" @click="onClick">
-		<view v-if="!isFirstChild" :class="{ 'uni-list--border': border }"></view>
+		<view v-if="!isFirstChild" :class="{ 'uni-list--border': _uix.border }"></view>
 		<view class="uni-list-item__container"
-			:class="{ 'container--right': showArrow || link=='', 'flex--direction': direction === 'column'}">
+			:class="{ 'container--right': _uix.showArrow === true || _uix.link=='', 'flex--direction': _uix.direction === 'column'}">
 			<view class="uni-list-item__header">
-				<view v-if="thumb" class="uni-list-item__icon">
-					<image :src="thumb" class="uni-list-item__icon-img" :class="['uni-list--' + thumbSize]" />
+				<view v-if="_uix.thumb != ''" class="uni-list-item__icon">
+					<image :src="_uix.thumb" class="uni-list-item__icon-img" :class="['uni-list--' + _uix.thumbSize]" />
 				</view>
-				<view v-else-if="showExtraIcon" class="uni-list-item__icon">
-					<uni-icons-x :color="extraIcon.color" :size="extraIcon.size" :type="extraIcon.type" />
+				<view v-else-if="_uix.showExtraIcon == true" class="uni-list-item__icon">
+					<uni-icons-x :color="_uix.extraIcon?.color" :size="_uix.extraIcon?.size" :type="_uix.extraIcon?.type" />
 				</view>
 				<slot name="header"></slot>
 			</view>
 			<view class="uni-list-item__content"
-				:class="{ 'uni-list-item__content--center': thumb=='' || showExtraIcon || showBadge || showSwitch }">
+				:class="{ 'uni-list-item__content--center': _uix.thumb=='' || _uix.showExtraIcon == true || showBadge || _uix.showSwitch == true }">
 				<slot name="body">
-					<text v-if="title" class="uni-list-item__content-title"
-						:class="[ellipsis == 1 ? 'uni-ellipsis-' + ellipsis : '']">{{ title }}</text>
-					<text v-if="note" class="uni-list-item__content-note">{{ note }}</text>
+					<text v-if="_uix.title" class="uni-list-item__content-title"
+						:class="[_uix.ellipsis == 1 ? 'uni-ellipsis-' + _uix.ellipsis : '']">{{ _uix.title }}</text>
+					<text v-if="_uix.note!=''" class="uni-list-item__content-note">{{ _uix.note }}</text>
 				</slot>
 			</view>
-			<view v-if="rightText !== '' || showBadge || showSwitch" class="uni-list-item__extra"
-				:class="{ 'flex--justify': direction === 'column' }">
-				<text v-if="rightText  !== ''" class="uni-list-item__extra-text">{{ rightText }}</text>
+			<view v-if="_uix.rightText !== '' || showBadge || _uix.showSwitch == true" class="uni-list-item__extra"
+				:class="{ 'flex--justify': _uix.direction === 'column' }">
+				<text v-if="_uix.rightText  !== ''" class="uni-list-item__extra-text">{{ _uix.rightText }}</text>
 				<!-- <uni-badge v-if="showBadge" :type="badgeType" :text="badgeText" :custom-style="badgeStyle" /> -->
-				<switch v-if="showSwitch" :disabled="disabled" :checked="switchChecked" @change="onSwitchChange" />
+				<switch v-if="_uix.showSwitch == true" :disabled="_uix.disabled" :checked="_uix.switchChecked"
+					@change="onSwitchChange" />
 			</view>
 			<slot name="footer"></slot>
 		</view>
-		<uni-icons-x v-if="showArrow" :size="16" class="uni-icon-wrapper" color="#bbb" type="right" />
+		<uni-icons-x v-if="_uix.showArrow === true" :size="16" class="uni-icon-wrapper" color="#bbb" type="right" />
 	</view>
 </template>
 
-<script>
-	import { UniListItemXExtraIcon, UniListItemXSwitchChangeEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+<script lang="uts">
+	import { UniListItemXExtraIcon, UniListItemXSwitchChangeEvent, UniListItemX, defaultUniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * ListItem 列表子组件
 	 * @description 列表子组件 import { UniListItemXExtraIcon,UniListItemXSwitchChangeEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
@@ -76,96 +77,123 @@
 		props: {
 			direction: {
 				type: String,
-				default: 'row'
+				default: defaultUniListItemX["direction"]
 			},
 			title: {
 				type: String,
-				default: ''
+				default: defaultUniListItemX["title"]
 			},
 			note: {
 				type: String,
-				default: ''
+				default: defaultUniListItemX["note"]
 			},
 			ellipsis: {
 				type: Number,
-				default: 0
+				default: defaultUniListItemX["ellipsis"]
 			},
 			disabled: {
 				type: Boolean,
-				default: false
+				default: defaultUniListItemX["disabled"]
 			},
 			clickable: {
 				type: Boolean,
-				default: false
+				default: defaultUniListItemX["clickable"]
 			},
 			showArrow: {
 				type: Boolean,
-				default: false
+				default: defaultUniListItemX["showArrow"]
 			},
 			link: {
 				type: String,
-				default: 'navigateTo'
+				default: defaultUniListItemX["link"]
 			},
 			to: {
 				type: String,
-				default: ''
+				default: defaultUniListItemX["to"]
 			},
 			showBadge: {
 				type: Boolean,
-				default: false
+				default: defaultUniListItemX["showBadge"]
 			},
 			showSwitch: {
 				type: Boolean,
-				default: false
+				default: defaultUniListItemX["showSwitch"]
 			},
 			switchChecked: {
 				type: Boolean,
-				default: false
+				default: defaultUniListItemX["switchChecked"]
 			},
 			badgeText: {
 				type: String,
-				default: ''
+				default: defaultUniListItemX["badgeText"]
 			},
 			badgeType: {
 				type: String,
-				default: 'success'
+				default: defaultUniListItemX["badgeType"]
 			},
+			rightText: {
+				type: String,
+				default: defaultUniListItemX["rightText"]
+			},
+			thumb: {
+				type: String,
+				default: defaultUniListItemX["thumb"]
+			},
+			thumbSize: {
+				type: String,
+				default: defaultUniListItemX["thumbSize"]
+			},
+			showExtraIcon: {
+				type: Boolean,
+				default: defaultUniListItemX["showExtraIcon"]
+			},
+			extraIcon: {
+				type: Object as PropType<UniListItemXExtraIcon>,
+				default: defaultUniListItemX["extraIcon"]
+			},
+			border: {
+				type: Boolean,
+				default: defaultUniListItemX["border"]
+			},
+			uix: {
+				type: Object as PropType<UniListItemX>,
+				default: () : UniListItemX => ({} as UniListItemX)
+			},
+			// TODO 支持badge
 			// badgeStyle: {
 			// 	type: Object,
 			// 	default() {
 			// 		return {}
 			// 	}
 			// },
-			rightText: {
-				type: String,
-				default: ''
-			},
-			thumb: {
-				type: String,
-				default: ''
-			},
-			thumbSize: {
-				type: String,
-				default: 'base'
-			},
-			showExtraIcon: {
-				type: Boolean,
-				default: false
-			},
-			extraIcon: {
-				type: Object as PropType<UniListItemXExtraIcon>,
-				default: () : UniListItemXExtraIcon => ({
-					color: '#000',
-					type: "list",
-					size: 16
-				} as UniListItemXExtraIcon)
-			},
-			border: {
-				type: Boolean,
-				default: true
-			}
 		},
 		computed: {
+			_uix() : UniListItemX {
+				let uixResult : UniListItemX = {}
+				let utsDefault : UTSJSONObject = defaultUniListItemX
+				// if(this.uix.listText!=null){
+				// 	console.log("uix",this.uix)
+				// }
+				// #ifdef UNI-APP-X
+				UTSJSONObject.keys(utsDefault).forEach((item, index) => {
+				// #endif
+				// #ifndef UNI-APP-X
+				Object.keys(utsDefault).forEach((item, index) => {
+				// #endif
+					let temp : any | null
+					if (this.$props[item] != utsDefault[item]) {
+						temp = this.$props[item]
+					} else {
+						if(this.uix[item]!=null){
+							temp = this.uix[item]
+						}else{
+							temp = utsDefault[item]
+						}
+					}
+					uixResult[item] = temp
+				})
+				return uixResult
+			}
 		},
 		watch: {
 		},
@@ -200,11 +228,11 @@
 				}
 			},
 			onClick() {
-				if (this.to !== '') {
+				if (this._uix.to !== '') {
 					this.openPage();
 					return;
 				}
-				if (this.clickable) {
+				if (this._uix.clickable == true) {
 					this.$emit('click', {
 						data: {}
 					});
@@ -217,19 +245,19 @@
 				this.$emit('switchChange', event);
 			},
 			openPage() : void {
-				const index = ['navigateTo', 'redirectTo', 'reLaunch', 'switchTab'].indexOf(this.link)
+				const index = ['navigateTo', 'redirectTo', 'reLaunch', 'switchTab'].indexOf(this._uix.link as string)
 				if (index != -1) {
-					this.pageApi(this.link);
+					this.pageApi(this._uix.link);
 				} else {
 					this.pageApi('navigateTo');
 				}
 			},
-			pageApi(api : string) : void {
+			pageApi(api ?: string) : void {
 				// TODO https://yuhespace.youtrack.cloud/issue/uix-9/uniappx
 				switch (api) {
 					case 'navigateTo':
 						uni.navigateTo({
-							url: this.to,
+							url: this._uix.to as string,
 							success: (res : any) => {
 								this.$emit('click', res);
 							},
@@ -240,7 +268,7 @@
 						break;
 					case 'redirectTo':
 						uni.redirectTo({
-							url: this.to,
+							url: this._uix.to as string,
 							success: (res : any) => {
 								this.$emit('click', res);
 							},
@@ -251,7 +279,7 @@
 						break;
 					case 'reLaunch':
 						uni.reLaunch({
-							url: this.to,
+							url: this._uix.to as string,
 							success: (res : any) => {
 								this.$emit('click', res);
 							},
@@ -262,7 +290,7 @@
 						break;
 					case 'switchTab':
 						uni.switchTab({
-							url: this.to,
+							url: this._uix.to as string,
 							success: (res : any) => {
 								this.$emit('click', res);
 							},
@@ -273,7 +301,7 @@
 						break;
 					default:
 						uni.navigateTo({
-							url: this.to,
+							url: this._uix.to as string,
 							success: (res : any) => {
 								this.$emit('click', res);
 							},
@@ -326,8 +354,8 @@
 		position: relative;
 		display: flex;
 		flex-direction: row;
-		// padding: $list-item-pd;
-		// padding-left: $uni-spacing-row-lg;
+		padding: $list-item-pd;
+		padding-left: $uni-spacing-row-lg;
 		padding-right: $uni-spacing-row-lg;
 		flex: 1;
 		overflow: hidden;
@@ -362,13 +390,14 @@
 
 	.uni-list-item__content {
 		display: flex;
-		padding: $list-item-pd;
-		padding-left: $uni-spacing-row-lg;
-		flex: 1;
+		// padding: $list-item-pd;
+		// padding-left: $uni-spacing-row-lg;
 		// color: #3b4144;
+		flex: 1;
+
 		overflow: hidden;
 		flex-direction: column;
-		justify-content: space-between;
+		justify-content: center;
 		overflow: hidden;
 	}
 
@@ -404,7 +433,7 @@
 	}
 
 	.uni-list-item__icon {
-		margin-left: 15px;
+		margin-right: 10px;
 	}
 
 	.uni-list-item__icon-img {
@@ -421,11 +450,11 @@
 
 	.flex--direction {
 		flex-direction: column;
-		// align-items: initial;
+		align-items: flex-start;
 	}
 
 	.flex--justify {
-		// justify-content: initial;
+		align-items: flex-start;
 	}
 
 	.uni-list--lg {

@@ -94,12 +94,12 @@
 			}
 		},
 		onLoad() {
-			// this.$nextTick(()=>{
-			// 	uni.navigateTo({
-			// 		url: "/pages/uvue/notice-bar-x/notice-bar-x"
-			// 		// url: "/pages/test/test/test-setup"
-			// 	})
-			// })
+			this.$nextTick(()=>{
+				// uni.navigateTo({
+				// 	url: "/pages/uvue/list-x/list-x"
+				// 	// url: "/pages/test/test/test-setu"
+				// })
+			})
 		},
 		methods: {
 			click() {

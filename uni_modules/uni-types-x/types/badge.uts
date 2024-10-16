@@ -1,0 +1,37 @@
+export type UniBadgeXPositionStyle = {
+	right ?: string
+	left ?: string
+	top ?: string
+	bottom ?: string
+}
+
+
+export type UniBadgeXDotStyle = {
+	width ?: string
+	minWidth ?: string
+	height ?: string
+	padding ?: string
+	borderRadius ?: string
+}
+
+export type UniBadgeX = {
+	type?:string
+	inverted?:boolean
+	isDot?:boolean
+	maxNum?:number
+	absolute?:string
+	offset?:number[]
+	text?:string
+	size?:string
+}
+
+export const defaultUniBadgeX:UniBadgeX = {
+	type:"error",
+	inverted:false,
+	isDot:false,
+	maxNum:99,
+	absolute:'',
+	offset:[0,0],
+	text:'',
+	size:'small'
+}

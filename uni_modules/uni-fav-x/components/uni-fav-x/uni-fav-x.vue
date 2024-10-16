@@ -8,7 +8,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	import { UniFavXContentText, defaultUniFavX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	/**
 	 * Fav 收藏按钮
@@ -114,6 +114,7 @@
 	$fav-height: 25px;
 
 	.uni-fav {
+		display: flex;
 		flex-direction: row;
 		align-items: center;
 		justify-content: center;

@@ -37,7 +37,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	// #ifdef APP-NVUE
 	const dom = weex.requireModule('dom');
 	const animation = weex.requireModule('animation');
@@ -178,10 +178,10 @@
 		methods: {
 			initSize() {
 				if (this.scrollable) {
-					
-					let query : Promise<string>[] = [],
-						boxWidth = 0,
-						textWidth = 0;
+
+					let query : Promise<string>[] = []
+					let boxWidth:number = 0
+					let textWidth:number = 0
 					let textQuery = new Promise<string>((resolve, reject) => {
 						uni.createSelectorQuery()
 							.in(this)
@@ -214,8 +214,8 @@
 							this.animationPlayState = 'running'
 						}, 1000)
 					})
-					
-					
+
+
 				}
 			},
 			loopAnimation() {
@@ -259,11 +259,9 @@
 
 <style lang="scss" scoped>
 	.uni-noticebar {
-		/* #ifndef APP-NVUE */
 		display: flex;
 		width: 100%;
 		box-sizing: border-box;
-		/* #endif */
 		flex-direction: row;
 		align-items: center;
 		padding: 10px 12px;
@@ -302,38 +300,29 @@
 		flex-direction: row;
 	}
 
-	/* #ifndef APP-NVUE */
 	.uni-noticebar__content-wrapper--scrollable {
 		position: relative;
 	}
 
-	/* #endif */
 
 	.uni-noticebar__content--scrollable {
-		/* #ifdef APP-NVUE */
-		flex: 0;
-		/* #endif */
-		/* #ifndef APP-NVUE */
 		flex: 1;
-		display: block;
+		// display: block;
 		overflow: hidden;
-		/* #endif */
 	}
 
 	.uni-noticebar__content--single {
-		/* #ifndef APP-NVUE */
-		display: flex;
+		// display: flex;
 		flex: none;
 		width: 100%;
 		justify-content: center;
-		/* #endif */
 	}
 
 	.uni-noticebar__content-text {
 		font-size: 14px;
 		line-height: 18px;
 		/* #ifndef APP-NVUE */
-		word-break: break-all;
+		// word-break: break-all;
 		/* #endif */
 	}
 
@@ -342,7 +331,7 @@
 		lines: 1;
 		/* #endif */
 		/* #ifndef APP-NVUE */
-		display: block;
+		// display: block;
 		width: 100%;
 		white-space: nowrap;
 		/* #endif */
@@ -357,7 +346,7 @@
 		/* #endif */
 		/* #ifndef APP-NVUE */
 		position: absolute;
-		display: block;
+		// display: block;
 		height: 18px;
 		line-height: 18px;
 		white-space: nowrap;

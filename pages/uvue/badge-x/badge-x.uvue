@@ -107,6 +107,7 @@
 
 	/* #endif */
 	.example-body {
+		display: flex;
 		flex-direction: row;
 	}
 

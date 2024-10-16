@@ -40,7 +40,7 @@
 	</view>
 </template>
 
-<script>
+<script lang="uts">
 	import { UniFabXContentItem,UniFabXPattern } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 
 	/**
@@ -157,13 +157,8 @@
 			},
 			// 计算 nvue bottom
 			nvueBottom() : number {
-				const safeBottom = uni.getSystemInfoSync().windowBottom;
-				// #ifdef APP-NVUE
-				return 30 + safeBottom
-				// #endif
-				// #ifndef APP-NVUE
+				// const safeBottom = uni.getSystemInfoSync().windowBottom;
 				return 30
-				// #endif
 			}
 		},
 		watch: {
@@ -213,7 +208,7 @@
 			 * 获取 位置信息
 			 */
 			getPosition(types : number, paramA : string, paramB : string) : boolean {
-				if (types === 0) {
+				if (types == 0) {
 					return this.horizontal === paramA && this.vertical === paramB
 				} else if (types === 1) {
 					return this.direction === paramA && this.vertical === paramB

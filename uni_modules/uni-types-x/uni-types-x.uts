@@ -1,3 +1,46 @@
+// TODO 不能已多层级的方式调用，uniappx可以，uniapp不可以
+// import { UniBadgeXDotStyle,UniBadgeXPositionStyle,UniBadgeX,defaultUniBadgeX } from "./types/badge"
+// ------ badge
+
+export type UniBadgeXPositionStyle = {
+	right ?: string
+	left ?: string
+	top ?: string
+	bottom ?: string
+}
+
+
+export type UniBadgeXDotStyle = {
+	width ?: string
+	minWidth ?: string
+	height ?: string
+	padding ?: string
+	borderRadius ?: string
+}
+
+export type UniBadgeX = {
+	type?:string
+	inverted?:boolean
+	isDot?:boolean
+	maxNum?:number
+	absolute?:string
+	offset?:number[]
+	text?:string
+	size?:string
+}
+
+export const defaultUniBadgeX:UniBadgeX = {
+	type:"error",
+	inverted:false,
+	isDot:false,
+	maxNum:99,
+	absolute:'',
+	offset:[0,0],
+	text:'',
+	size:'small'
+}
+
+
 // ------ card-x ------ 
 export type UniCardXClickEvent = string
 
@@ -19,12 +62,14 @@ export type UniListItemXExtraIcon = {
 export type UniListItemXSwitchChangeEvent = {
 	value : Boolean
 }
+
 /**
  * UniListItemX
  * 用于组件 uni-list-item-x
  * import { UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
  */
 export type UniListItemX = {
+	// -----
 	/**
 	 * string 排版方向可以取值：row column
 	 */
@@ -124,23 +169,7 @@ export const defaultUniListItemX = {
 	border: true
 };
 
-// ------ badge
 
-export type UniBadgeXPositionStyle = {
-	right ?: string
-	left ?: string
-	top ?: string
-	bottom ?: string
-}
-
-
-export type UniBadgeXDotStyle = {
-	width ?: string
-	minWidth ?: string
-	height ?: string
-	padding ?: string
-	borderRadius ?: string
-}
 
 
 // ----------- breadcrumb
@@ -149,13 +178,13 @@ export type UniBadgeXDotStyle = {
  * 面包屑项的类型
  */
 export type BreadcrumbItemX = {
-	to ?:string
-	name ?:string
+	to ?: string
+	name ?: string
 }
 
-export const defaultBreadcrumbItemX:BreadcrumbItemX = {
-	to:'',
-	name:''
+export const defaultBreadcrumbItemX : BreadcrumbItemX = {
+	to: '',
+	name: ''
 }
 
 
@@ -167,50 +196,50 @@ export type UniFabX = {}
  * 用于uni-fab-x的content
  */
 export type UniFabXContentItem = {
-	iconPath:string
-	selectedIconPath:string
-	text:string
-	active:boolean
+	iconPath : string
+	selectedIconPath : string
+	text : string
+	active : boolean
 }
 
 export type UniFabXPattern = {
-	color?:string
-	selectedColor?:string
-	backgroundColor?:string
-	buttonColor?:string
-	iconColor?:string
-	icon?:string
+	color ?: string
+	selectedColor ?: string
+	backgroundColor ?: string
+	buttonColor ?: string
+	iconColor ?: string
+	icon ?: string
 }
 
 
 // -------- fav
 
 export type UniFavXContentText = {
-	contentDefault:string
-	contentFav:string
+	contentDefault : string
+	contentFav : string
 }
 
 export type UniFavX = {
-	star?:boolean
-	bgColor?:string
-	bgColorChecked?:string
-	fgColor?:string
-	fgColorChecked?:string
-	circle?:boolean
-	checked?:boolean
-	contentText?:UniFavXContentText
+	star ?: boolean
+	bgColor ?: string
+	bgColorChecked ?: string
+	fgColor ?: string
+	fgColorChecked ?: string
+	circle ?: boolean
+	checked ?: boolean
+	contentText ?: UniFavXContentText
 }
 
-export const defaultUniFavX:UniFavX = {
-	star:true,
-	bgColor:"#eeeeee",
-	bgColorChecked:'#007aff',
-	fgColor:"#666666",
-	fgColorChecked:"#FFFFFF",
-	circle:false,
-	checked:false,
-	contentText:{
-		contentDefault:"收藏",
-		contentFav:"已收藏"
+export const defaultUniFavX : UniFavX = {
+	star: true,
+	bgColor: "#eeeeee",
+	bgColorChecked: '#007aff',
+	fgColor: "#666666",
+	fgColorChecked: "#FFFFFF",
+	circle: false,
+	checked: false,
+	contentText: {
+		contentDefault: "收藏",
+		contentFav: "已收藏"
 	} as UniFavXContentText
 }
