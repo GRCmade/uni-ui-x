@@ -9,7 +9,7 @@
 </template>
 
 <script lang="uts">
-	import { UniFavXContentText, defaultUniFavX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniFavXContentText, defaultUniFavX } from '@/uni_modules/uni-types-x/index.uts';
 	/**
 	 * Fav 收藏按钮
 	 * @description 用于收藏功能，可点击切换选中、不选中的状态

@@ -36,10 +36,10 @@
 </template>
 
 <script lang="uts">
-	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/index.uts';
 	/**
 	 * Card 卡片 
-	 * @description 卡片视图组件 import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	 * @description 卡片视图组件 import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/index.uts';
 	 * @tutorial https://ext.dcloud.net.cn/plugin?id=22
 	 * @property {String} title 标题文字
 	 * @property {String} subTitle 副标题

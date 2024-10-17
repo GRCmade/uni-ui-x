@@ -1,6 +1,29 @@
 // TODO 不能已多层级的方式调用，uniappx可以，uniapp不可以
 // import { UniBadgeXDotStyle,UniBadgeXPositionStyle,UniBadgeX,defaultUniBadgeX } from "./types/badge"
-// ------ badge
+
+export type UniBadgeType = "primary" | "success" | "warning" | "error" | "info"
+export type UniBadgeAbsolute = "rightTop" | "rightBottom" | "leftBottom" | "leftTop"
+/**
+ * UniBadgeX badge的类型
+ */
+export type UniBadgeX = {
+	/**
+		* @property {String} type = [info|primary|success|warning|error] 颜色类型
+		*	@value info 灰色
+		*	@value primary 蓝色
+		* @value success 绿色
+		* @value warning 黄色
+		* @value error 红色
+	 */
+	type ?: UniBadgeType
+	inverted ?: boolean
+	isDot ?: boolean
+	maxNum ?: number
+	absolute ?: UniBadgeAbsolute
+	offset ?: number[]
+	text ?: number
+	size ?: string
+}
 
 export type UniBadgeXPositionStyle = {
 	right ?: string
@@ -18,27 +41,18 @@ export type UniBadgeXDotStyle = {
 	borderRadius ?: string
 }
 
-export type UniBadgeX = {
-	type?:string
-	inverted?:boolean
-	isDot?:boolean
-	maxNum?:number
-	absolute?:string
-	offset?:number[]
-	text?:string
-	size?:string
+export const defaultUniBadgeX = {
+	type: "error",
+	inverted: false,
+	isDot: false,
+	maxNum: 99,
+	absolute: '',
+	offset: [0, 0],
+	text: 0,
+	size: 'small'
 }
 
-export const defaultUniBadgeX:UniBadgeX = {
-	type:"error",
-	inverted:false,
-	isDot:false,
-	maxNum:99,
-	absolute:'',
-	offset:[0,0],
-	text:'',
-	size:'small'
-}
+
 
 
 // ------ card-x ------ 
@@ -66,7 +80,7 @@ export type UniListItemXSwitchChangeEvent = {
 /**
  * UniListItemX
  * 用于组件 uni-list-item-x
- * import { UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+ * import { UniListItemX } from '@/uni_modules/uni-types-x/index.uts';
  */
 export type UniListItemX = {
 	// -----

@@ -117,7 +117,7 @@
 </template>
 
 <script lang="uts">
-	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts'; 
+	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/index.uts'; 
 	export default {
 		components: {},
 		data() {

@@ -1,6 +1,6 @@
 <template>
 	<view v-if="show" class="uni-noticebar" :style="{ backgroundColor }" @click="onClick">
-		<uni-icons-x v-if="showIcon === true" class="uni-noticebar-icon" type="sound" :color="color"
+		<uni-icons-x v-if="showIcon == true" class="uni-noticebar-icon" type="sound" :color="color"
 			:size="fontSize * 1.5" />
 		<view ref="textBox" class="uni-noticebar__content-wrapper" :class="{
 				'uni-noticebar__content-wrapper--scrollable': scrollable == true,
@@ -148,10 +148,10 @@
 		},
 		computed: {
 			isShowGetMore() : boolean {
-				return this.showGetMore === true
+				return this.showGetMore == true
 			},
 			isShowClose() : boolean {
-				return (this.showClose === true) && (this.showGetMore === false)
+				return (this.showClose == true) && (this.showGetMore == false)
 			}
 		},
 		mounted() {
@@ -190,7 +190,7 @@
 							.exec(ret => {
 								// TODO 验证
 								let nodeInfo = ret[0] as NodeInfo
-								this.textWidth = nodeInfo?.width as Number
+								this.textWidth = nodeInfo.width as number
 								resolve('')
 							})
 					})
@@ -201,7 +201,7 @@
 							.boundingClientRect()
 							.exec(ret => {
 								let nodeInfo = ret[0] as NodeInfo
-								this.textWidth = nodeInfo?.width as Number
+								this.textWidth = nodeInfo.width as number
 								resolve('')
 							})
 					})
@@ -351,24 +351,29 @@
 		line-height: 18px;
 		white-space: nowrap;
 		padding-left: 100%;
+		/* #ifdef WEB */
 		animation: notice 10s 0s linear infinite both;
 		animation-play-state: paused;
+		/* #endif */
+
 		/* #endif */
 	}
 
 	.uni-noticebar__more {
 		/* #ifndef APP-NVUE */
-		display: inline-flex;
+		// display: inline-flex;
 		/* #endif */
 		flex-direction: row;
 		flex-wrap: nowrap;
 		align-items: center;
 		padding-left: 5px;
 	}
-
+	/* #ifdef WEB */
 	@keyframes notice {
 		100% {
 			transform: translate3d(-100%, 0, 0);
 		}
 	}
+	/* #endif */
+
 </style>

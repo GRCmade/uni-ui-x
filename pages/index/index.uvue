@@ -8,7 +8,7 @@
 				<image class="home-header__logo" src="../../static/image/uniui-logo.png" mode="aspectFit"></image>
 				<view class="home-header__content">
 					<view>
-						<text class="home-header__content-title">兼容web android ios</text>
+						<text class="home-header__content-title">1兼容web android ios</text>
 					</view>
 					<view>
 						<!-- <text class="home-header__content-subtitle">uni-ui-x 是 DCloud 官方面向uni-app x开发者提供的一套 ui 解决方案</text> -->
@@ -98,10 +98,10 @@
 		},
 		onLoad() {
 			this.$nextTick(()=>{
-				// uni.navigateTo({
-				// 	url: "/pages/uvue/list-x/list-x"
-				// 	// url: "/pages/test/test/test-setu"
-				// })
+				uni.navigateTo({
+					url: "/pages/uvue/badge-x/badge-x"
+					// url: "/pages/test/test/test-setu"
+				})
 			})
 		},
 		methods: {

@@ -12,7 +12,7 @@
 </template>
 
 <script lang="uts">
-	import { UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniListItemX } from '@/uni_modules/uni-types-x/index.uts';
 	export default {
 		data() {
 			return {

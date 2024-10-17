@@ -91,7 +91,7 @@ uni-ui-x由于受写法限制，API支持情况等相关问题，与uni-ui有部
 </template>
 
 <script>
-	import { UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniListItemX } from '@/uni_modules/uni-types-x/index.uts';
 	export default {
 		data() {
 			return {

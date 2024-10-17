@@ -121,7 +121,7 @@
 	.uni-tag {
 		line-height: 14px;
 		font-size: 12px;
-		font-weight: 200;
+		// font-weight: 200;
 		padding: $tag-default-pd;
 		color: #fff;
 		border-radius: 3px;

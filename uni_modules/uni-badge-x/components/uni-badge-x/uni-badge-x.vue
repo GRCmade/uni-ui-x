@@ -1,14 +1,17 @@
 <template>
 	<view class="uni-badge--x">
-		<slot/>
+		<slot />
 		<view class="uni-badge--box" :class="classNames" :style="positionStyle">
-			<text v-if="text" :class="textStyles" class="uni-badge" @click="onClick()">{{displayValue}}</text>
+			<view class="uni-badge" @click="onClick()">
+				<text class="uni-badge-text" :class="textStyles">{{displayValue}}</text>
+			</view>
 		</view>
 	</view>
 </template>
 
 <script lang="uts">
-	import { UniBadgeXPositionStyle, UniBadgeXDotStyle,UniBadgeX,defaultUniBadgeX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniBadgeX, UniBadgeType,UniBadgeXDotStyle,UniBadgeXPositionStyle,defaultUniBadgeX,UniBadgeAbsolute } from '@/uni_modules/uni-types-x/index.uts';
+
 	/**
 	 * BadgeX 数字角标
 	 * @description 数字角标一般和其它控件（列表、9宫格等）配合使用，用于进行数量提示，默认为实心灰色背景
@@ -33,42 +36,41 @@
 	 * @event {Function} click 点击 Badge 触发事件
 	 * @example <uni-badge text="1"></uni-badge>
 	 */
-
 	export default {
 		name: 'UniBadge',
 		emits: ['click'],
 		props: {
 			type: {
-				type: String,
-				default: 'error'
+				type: String as PropType<UniBadgeType>,
+				default: defaultUniBadgeX["type"]
 			},
 			inverted: {
 				type: Boolean,
-				default: false
+				default: defaultUniBadgeX["inverted"]
 			},
 			isDot: {
 				type: Boolean,
-				default: false
+				default: defaultUniBadgeX["isDot"]
 			},
 			maxNum: {
 				type: Number,
-				default: 99
+				default: defaultUniBadgeX["maxNum"]
 			},
 			absolute: {
-				type: String,
-				default: ''
+				type: String as PropType<UniBadgeAbsolute>,
+				default: defaultUniBadgeX["absolute"]
 			},
 			offset: {
 				type: Array as PropType<number[]>,
-				default: [0, 0]
+				default: defaultUniBadgeX["offset"]
 			},
 			text: {
-				type: String,
-				default: ''
+				type: Number,
+				default: defaultUniBadgeX["text"]
 			},
 			size: {
 				type: String,
-				default: 'small'
+				default: defaultUniBadgeX["size"]
 			},
 			uix: {
 				type: Object as PropType<UniBadgeX>,
@@ -86,14 +88,33 @@
 			return {};
 		},
 		computed: {
-			// _uix():UniBadgeX{
-			// 	let __uix = JSON.parseObject(JSON.stringify(this.uix))
-			// 	let deafult = JSON.parseObject(JSON.stringify(defaultUniBadgeX))
-			// 	let props = JSON.parseObject(JSON.stringify(this.$props))
-			// 	return JSON.parse<UniBadgeX>(JSON.stringify(CompareUixValue(__uix,deafult,props)))
+			// _uix() : UniBadgeX {
+			// 	let uixResult : UniBadgeX = {}
+			// 	let utsDefault : UTSJSONObject = defaultUniBadgeX
+			// 	// #ifdef UNI-APP-X
+			// 	let keys = UTSJSONObject.keys(utsDefault)
+			// 	// #endif
+			// 	// #ifndef UNI-APP-X
+			// 	let keys = Object.keys(utsDefault)
+			// 	// #endif
+			// 	keys.forEach((item, index) => {
+			// 		let temp : any | null
+			// 		if (this.$props[item] != utsDefault[item]) {
+			// 			temp = this.$props[item]
+			// 		} else {
+			// 			if (this.uix[item] != null) {
+			// 				temp = this.uix[item]
+			// 			} else {
+			// 				temp = utsDefault[item]
+			// 			}
+			// 		}
+			// 		uixResult[item] = temp
+			// 	})
+			// 	return uixResult
 			// },
 			width() : number {
-				return this.text.length * 8 + 12
+				// let num:number =  this.text as number
+				return 1 * 8 + 12
 			},
 			textStyles() : string {
 				const {
@@ -120,17 +141,18 @@
 			},
 			positionStyle() : UTSJSONObject {
 				if (this.absolute == '') return {}
-				// TODO暂时取消this.offset 造成的影响：角标的相对定位目前处于元素内部，而不是在元素的角上
+				// TODO 超出父组件的盒子会发生剪裁
 				// let w:number = this.width / 2
 				// let h:number = 10
 				// if (this.isDot == true) {
 				// 	w = 5
 				// 	h = 5
 				// }
-				// const x = `${this.offset[0] - w}px`
-				// const y = `${this.offset[1] - h}px`
+				// const x = `${(this?.offset?.[0] ?? 0) - w}px`;
+				// const y = `${(this?.offset?.[1] ?? 0) - w}px`;
 				const x = '0'
 				const y = '0'
+				
 
 				const whiteList : UniBadgeXPositionStyle[] = [
 					{
@@ -147,7 +169,7 @@
 						top: y
 					}
 				]
-				let num : number = ["rightTop", "rightBottom", "leftBottom", "leftTop"].indexOf(this.absolute)
+				let num : number = ["rightTop", "rightBottom", "leftBottom", "leftTop"].indexOf(this.absolute ?? "");
 				// #ifdef UNI-APP-X
 				let utsJsonA = JSON.parseObject(JSON.stringify(whiteList[num >= 0 ? num : 0]))
 				// #endif
@@ -168,13 +190,12 @@
 					borderRadius: '10px'
 				} as UniBadgeXDotStyle
 			},
-			displayValue() : string {
+			displayValue() : number | null {
 				const {
 					isDot,
 					text,
-					maxNum
 				} = this
-				return isDot ? '' : (parseInt(text) > maxNum ? `${maxNum}+` : text)
+				return isDot == true ? null : text
 			}
 		},
 		methods: {
@@ -195,14 +216,15 @@
 
 	$bage-size: 12px;
 	$bage-small: scale(0.8);
+	
 
 	.uni-badge--x {
 		position: relative;
 		display: flex;
 		flex-direction: row;
 	}
-	
-	.uni-badge--absolute{
+
+	.uni-badge--absolute {
 		position: absolute;
 	}
 
@@ -210,19 +232,22 @@
 		transform: $bage-small;
 		transform-origin: center center;
 	}
-	.uni-badge--slot{
+
+	.uni-badge--slot {
 		z-index: 10;
 	}
+
 	.uni-badge--box {
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		min-width: 20px;
-		overflow: hidden;
 		height: 20px;
+		min-width: 20px;
 		border-radius: 200px;
 		z-index: 99;
-
+		/* #ifndef UNI-APP-X */
+		line-height: 20px;
+		/* #endif */
 		&--info {
 			background-color: $uni-info;
 		}
@@ -249,13 +274,14 @@
 	}
 
 	.uni-badge {
-		padding: 0 4px;
-		line-height: 18px;
-		font-size: $bage-size;
+		padding: 0 6px;
 		/* #ifdef H5 */
 		cursor: pointer;
 		/* #endif */
 
+		.uni-badge-text {
+			font-size: $bage-size;
+		}
 
 		&--inverted {
 			padding: 0 5px 0 0;

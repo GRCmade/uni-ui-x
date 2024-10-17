@@ -36,10 +36,10 @@
 </template>
 
 <script lang="uts">
-	import { UniListItemXExtraIcon, UniListItemXSwitchChangeEvent, UniListItemX, defaultUniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniListItemXExtraIcon, UniListItemXSwitchChangeEvent, UniListItemX, defaultUniListItemX } from '@/uni_modules/uni-types-x/index.uts';
 	/**
 	 * ListItem 列表子组件
-	 * @description 列表子组件 import { UniListItemXExtraIcon,UniListItemXSwitchChangeEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	 * @description 列表子组件 import { UniListItemXExtraIcon,UniListItemXSwitchChangeEvent } from '@/uni_modules/uni-types-x/index.uts';
 	 * @tutorial https://ext.dcloud.net.cn/plugin?id=24
 	 * @property {String} 	title 							标题
 	 * @property {String} 	note 							描述

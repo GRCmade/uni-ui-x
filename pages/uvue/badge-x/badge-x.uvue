@@ -8,36 +8,37 @@
 			</uni-card-x>
 			<uni-section-x title="基础用法" type="line" padding>
 				<view class="example-body">
-					<uni-badge-x class="uni-badge-left-margin" text="1" />
-					<uni-badge-x class="uni-badge-left-margin" text="2" type="primary" />
-					<uni-badge-x class="uni-badge-left-margin" text="34" type="success" />
-					<uni-badge-x class="uni-badge-left-margin" text="45" type="warning" />
-					<uni-badge-x class="uni-badge-left-margin" text="123" type="info" />
+					<uni-badge-x class="uni-badge-left-margin" :text="1" />
+					<uni-badge-x class="uni-badge-left-margin" :text="2" type="primary" />
+					<uni-badge-x class="uni-badge-left-margin" :text="34" type="success" />
+					<uni-badge-x class="uni-badge-left-margin" :text="45" type="warning" />
+					<uni-badge-x class="uni-badge-left-margin" :text="123" type="info" />
+					<uni-badge-x :uix="uix"></uni-badge-x>
 				</view>
 
 			</uni-section-x>
 			<uni-section-x title="无底色" type="line" padding>
 				<view class="example-body">
-					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="1" />
-					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="2" type="primary" />
-					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="34" type="success" />
-					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="45" type="warning" />
-					<uni-badge-x class="uni-badge-left-margin" :inverted="true" text="123" type="info" />
+					<uni-badge-x class="uni-badge-left-margin" :inverted="true" :text="1" />
+					<uni-badge-x class="uni-badge-left-margin" :inverted="true" :text="2" type="primary" />
+					<uni-badge-x class="uni-badge-left-margin" :inverted="true" :text="34" type="success" />
+					<uni-badge-x class="uni-badge-left-margin" :inverted="true" :text="45" type="warning" />
+					<uni-badge-x class="uni-badge-left-margin" :inverted="true" :text="123" type="info" />
 				</view>
 			</uni-section-x>
 
 			<uni-section-x title="定位: aboslute 属性" type="line" padding>
 				<view class="example-body">
-					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="leftTop">
+					<uni-badge-x class="uni-badge-left-margin" :text="12" absolute="leftTop">
 						<view class="box"><text class="box-text">左上</text></view>
 					</uni-badge-x>
-					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="rightTop">
+					<uni-badge-x class="uni-badge-left-margin" :text="124" absolute="rightTop">
 						<view class="box"><text class="box-text">右上</text></view>
 					</uni-badge-x>
-					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="rightBottom">
+					<uni-badge-x class="uni-badge-left-margin" :text="1" absolute="rightBottom">
 						<view class="box"><text class="box-text">右下</text></view>
 					</uni-badge-x>
-					<uni-badge-x class="uni-badge-left-margin" text="1" absolute="leftBottom">
+					<uni-badge-x class="uni-badge-left-margin" :text="1" absolute="leftBottom">
 						<view class="box"><text class="box-text">左下</text></view>
 					</uni-badge-x>
 
@@ -46,7 +47,7 @@
 
 			<uni-section-x title="仅显示点: is-dot 属性" type="line" padding>
 				<view class="example-body">
-					<uni-badge-x class="uni-badge-left-margin" :isDot="true" text="0" absolute="rightTop">
+					<uni-badge-x class="uni-badge-left-margin" :isDot="true" :text="0" absolute="rightTop">
 						<view class="box"><text class="box-text">圆点</text></view>
 					</uni-badge-x>
 				</view>
@@ -76,6 +77,7 @@
 
 
 <script lang="uts">
+	import { UniBadgeX } from "@/uni_modules/uni-types-x/index.uts"
 	export default {
 		components: {},
 		data() {
@@ -84,7 +86,11 @@
 				customStyle: {
 					backgroundColor: '#62ed0d',
 					color: '#fff'
-				}
+				},
+				uix: {
+					type: "primary",
+					text: 2
+				} as UniBadgeX
 			};
 		},
 		mounted() {

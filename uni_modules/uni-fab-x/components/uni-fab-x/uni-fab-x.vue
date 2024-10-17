@@ -41,7 +41,7 @@
 </template>
 
 <script lang="uts">
-	import { UniFabXContentItem,UniFabXPattern } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniFabXContentItem,UniFabXPattern } from '@/uni_modules/uni-types-x/index.uts';
 
 	/**
 	 * Fab 悬浮按钮

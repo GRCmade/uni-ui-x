@@ -30,7 +30,7 @@
 </template>
 
 <script lang="uts">
-	import { UniFavXContentText } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { UniFavXContentText } from '@/uni_modules/uni-types-x/index.uts';
 	export default {
 		components: {},
 		data() {

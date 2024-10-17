@@ -22,7 +22,7 @@
 	<!-- #endif -->
 </template>
 <script lang="uts">
-	import { BreadcrumbItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
+	import { BreadcrumbItemX } from '@/uni_modules/uni-types-x/index.uts';
 	export default {
 		components: {},
 		data() {
