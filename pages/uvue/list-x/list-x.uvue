@@ -104,7 +104,7 @@
 	<!-- #endif -->
 </template>
 
-<script>
+<script lang="uts">
 	import { UniListItemXExtraIcon, UniListItemXSwitchChangeEvent, UniListItemX } from '@/uni_modules/uni-types-x/uni-types-x.uts';
 	export default {
 		components: {},

@@ -88,6 +88,13 @@
 			{
 				"navigationBarTitleText" : "NoticeBarX 通告栏"
 			}
+		},
+		{
+			"path" : "pages/uvue/tag-x/tag-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "TagX 标签"
+			}
 		}
 	],
 	"globalStyle": {

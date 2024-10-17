@@ -46,7 +46,7 @@
 </template>
 
 
-<script>
+<script lang="uts">
 	import {iconlist,IconList} from'./icons.uts'
 	export default {
 		components: {},

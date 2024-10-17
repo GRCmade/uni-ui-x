@@ -48,7 +48,7 @@
 	</scroll-view>
 	<!-- #endif -->
 </template>
-<script>
+<script lang="uts">
 	type Item = {
 		name : string
 		url : string
@@ -72,22 +72,25 @@
 				}, {
 					name: 'NoticeBarX 通告栏',
 					url: 'notice-bar-x'
+				}, {
+					name: 'TagX 标签',
+					url: 'tag-x'
 				}] as Item[],
 				support: [{
-					name: '标题栏',
+					name: 'SectionX 标题栏',
 					url: 'section-x'
 				}, {
-					name: '列表',
+					name: 'ListX 列表',
 					url: 'list-x'
 				}, {
-					name: '卡片',
+					name: 'CardX 卡片',
 					url: 'card-x'
 				}, {
-					name: '面包屑',
+					name: 'BreadcrumbX 面包屑',
 					url: 'breadcrumb-x'
 				}] as Item[],
 				unsupport: [{
-					name: '及联选择器',
+					name: 'DataPickerX 及联选择器',
 					url: 'data-picker-x'
 				}] as Item[],
 				platform: 'uvue'

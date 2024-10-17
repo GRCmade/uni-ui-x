@@ -116,7 +116,7 @@
 	<!-- #endif -->
 </template>
 
-<script>
+<script lang="uts">
 	import { UniCardXClickEvent } from '@/uni_modules/uni-types-x/uni-types-x.uts'; 
 	export default {
 		components: {},
@@ -198,6 +198,7 @@
 	.cover-image {
 		flex: 1;
 		height: 150px;
+		width: 100%;
 	}
 
 	.no-border {
