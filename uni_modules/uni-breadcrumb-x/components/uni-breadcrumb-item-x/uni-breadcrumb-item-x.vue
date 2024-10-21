@@ -36,8 +36,8 @@
 			}
 		},
 		created() {
-			const pages : Array<UniPage> = getCurrentPages()
-			const page : UniPage = pages[pages.length - 1]
+			const pages : Array<Page> = getCurrentPages()
+			const page : Page = pages[pages.length - 1]
 
 			if (page.route != '') {
 				this.currentPage = `/${page.route}`

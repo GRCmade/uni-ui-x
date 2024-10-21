@@ -1,6 +1,29 @@
 // TODO 不能已多层级的方式调用，uniappx可以，uniapp不可以
 // import { UniBadgeXDotStyle,UniBadgeXPositionStyle,UniBadgeX,defaultUniBadgeX } from "./types/badge"
 
+export function StrNum2Str(data?:any):string{
+	return typeof data == 'string'?data as string:data?.toString() ?? '';
+}
+
+export function BoolStr2Bool(data?:any):Boolean{
+	if(typeof data == 'boolean'){
+		return data as boolean
+	}else{
+		if(data == 'true')return true
+		else return false
+	}
+}
+
+export function BoolStr2Str(data?:any):string{
+	if(typeof data == 'boolean'){
+		if(data == true)return "true"
+		else return ""
+	}else{
+		return data as string
+	}
+}
+
+
 export type UniBadgeType = "primary" | "success" | "warning" | "error" | "info"
 export type UniBadgeAbsolute = "rightTop" | "rightBottom" | "leftBottom" | "leftTop"
 /**
@@ -256,4 +279,23 @@ export const defaultUniFavX : UniFavX = {
 		contentDefault: "收藏",
 		contentFav: "已收藏"
 	} as UniFavXContentText
+}
+
+
+// easyinput
+
+export type UniEasyInputXStyles = {
+	color?:string
+	backgroundColor?:string
+	disableColor?:string
+	borderColor?:string
+}
+
+export const defaultUniEasyInputX = {
+	styles:{
+		color: '#333',
+		backgroundColor: '#fff',
+		disableColor: '#F7F6F6',
+		borderColor: '#e5e5e5'
+	} as UniEasyInputXStyles
 }

@@ -95,6 +95,13 @@
 			{
 				"navigationBarTitleText" : "TagX 标签"
 			}
+		},
+		{
+			"path" : "pages/uvue/easyinput-x/easyinput-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "easyInputX 输入框"
+			}
 		}
 	],
 	"globalStyle": {

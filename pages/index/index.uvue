@@ -33,6 +33,14 @@
 						</uni-list-x>
 					</uni-section-x>
 
+					<uni-section-x title="表单组件" sub-title="可点击试用" type="line" style="margin-top: 0;">
+						<uni-list-x>
+							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
+								v-for="(layout, index) in form" :key="index" :title="layout.name" link
+								:to='`/pages/${platform}/${layout.url}/${layout.url}`' />
+						</uni-list-x>
+					</uni-section-x>
+
 					<uni-section-x title="支持不好的组件" sub-title="暂不可用" type="line" style="margin-top: 15px;">
 						<uni-list-x>
 							<uni-list-item-x show-arrow :thumb="'/static/icons/'+splitX(layout.url)+'.png'"
@@ -89,6 +97,10 @@
 					name: 'BreadcrumbX 面包屑',
 					url: 'breadcrumb-x'
 				}] as Item[],
+				form: [{
+					name: 'EasyInputx 搜索框',
+					url: 'easyinput-x'
+				}] as Item[],
 				unsupport: [{
 					name: 'DataPickerX 及联选择器',
 					url: 'data-picker-x'
@@ -97,10 +109,10 @@
 			}
 		},
 		onLoad() {
-			this.$nextTick(()=>{
+			this.$nextTick(() => {
 				uni.navigateTo({
-					url: "/pages/uvue/badge-x/badge-x"
-					// url: "/pages/test/test/test-setu"
+					url: "/pages/uvue/easyinput-x/easyinput-x"
+					// url: "/pages/test/test/test"
 				})
 			})
 		},
