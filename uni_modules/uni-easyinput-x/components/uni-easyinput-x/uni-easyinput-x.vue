@@ -1,5 +1,5 @@
 <template>
-	<view class="uni-easyinput" :class="{ 'uni-easyinput-error': msg }" >
+	<view class="uni-easyinput" :class="{ 'uni-easyinput-error': msg }">
 		<view class="uni-easyinput__content" :class="inputBorderClass" :style="inputContentStyle">
 			<uni-icons-x v-if="prefixIcon" class="content-clear-icon" :type="prefixIcon" color="#c0c4cc"
 				@click="onClickIcon('prefix')" size="22"></uni-icons-x>
@@ -142,9 +142,18 @@
 			}
 		},
 		props: {
-			name: String,
-			value: [Number, String],
-			modelValue: [Number, String],
+			name: {
+				type: String,
+				default: ''
+			},
+			value: {
+				type: [Number, String],
+				default: ''
+			},
+			modelValue: {
+				type: [Number, String],
+				default: ''
+			},
 			type: {
 				type: String,
 				default: 'text'
@@ -161,7 +170,10 @@
 				type: String,
 				default: ' '
 			},
-			placeholderStyle: String,
+			placeholderStyle: {
+				type: String,
+				default: ''
+			},
 			focus: {
 				type: Boolean,
 				default: false
@@ -260,7 +272,7 @@
 				// 	return this.errorMessage || this.formItem.errMsg;
 				// }
 				// TODO 处理头条 formItem 中 errMsg 不更新的问题
-				return this.localMsg != '' || this.errorMessage != '';
+				return this.localMsg != '' || BoolStr2Str(this.errorMessage) != '';
 			},
 			// 因为uniapp的input组件的maxlength组件必须要数值，这里转为数值，用户可以传入字符串数值
 			inputMaxlength() : number {
@@ -283,7 +295,7 @@
 					'is-focused': this.focusShow
 				});
 			},
-			inputBorderClass(): string {
+			inputBorderClass() : string {
 				return obj2strClass({
 					'is-input-border': this.inputBorder,
 					'is-input-error-border': this.inputBorder && this.msg,
@@ -295,7 +307,12 @@
 					this.styles.borderColor;
 				const borderColor =
 					this.inputBorder && this.msg ? '#dd524d' : focusColor;
+				// #ifdef UNI-APP-X
 				let style = JSON.parseObject(JSON.stringify(this.styles))
+				// #endif
+				// #ifndef UNI-APP-X
+				let style = this.styles
+				// #endif
 				const backgroundColor = this.disabled == true ? style?.["disableColor"] : style?.["backgroundColor"]
 				// console.log("backgroundColor", backgroundColor, this.styles)
 				return obj2strStyle({

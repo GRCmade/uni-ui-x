@@ -111,7 +111,7 @@
 		onLoad() {
 			this.$nextTick(() => {
 				uni.navigateTo({
-					url: "/pages/uvue/easyinput-x/easyinput-x"
+					url: "/pages/uvue/data-checkbox-x/data-checkbox-x"
 					// url: "/pages/test/test/test"
 				})
 			})

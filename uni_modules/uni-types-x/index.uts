@@ -1,24 +1,43 @@
 // TODO 不能已多层级的方式调用，uniappx可以，uniapp不可以
 // import { UniBadgeXDotStyle,UniBadgeXPositionStyle,UniBadgeX,defaultUniBadgeX } from "./types/badge"
 
-export function StrNum2Str(data?:any):string{
-	return typeof data == 'string'?data as string:data?.toString() ?? '';
+
+export function StrNum2NumInt(data ?: any) : number {
+	return typeof data == 'string' ? parseInt(data as string) : data as number
 }
 
-export function BoolStr2Bool(data?:any):Boolean{
-	if(typeof data == 'boolean'){
+/**
+ * 转为arr
+ * 非arr的变为【data】
+ */
+export function ArrStrNum2Arr<T>(data ?: any) : Array<T> {
+	let arr : Array<T> = [];
+	if (Array.isArray(data)) {
+		arr = data as Array<T>;
+	} else {
+		arr.push(data as T)
+	}
+	return arr;
+}
+
+export function StrNum2Str(data ?: any) : string {
+	return typeof data == 'string' ? data as string : data?.toString() ?? '';
+}
+
+export function BoolStr2Bool(data ?: any) : Boolean {
+	if (typeof data == 'boolean') {
 		return data as boolean
-	}else{
-		if(data == 'true')return true
+	} else {
+		if (data == 'true') return true
 		else return false
 	}
 }
 
-export function BoolStr2Str(data?:any):string{
-	if(typeof data == 'boolean'){
-		if(data == true)return "true"
+export function BoolStr2Str(data ?: any) : string {
+	if (typeof data == 'boolean') {
+		if (data == true) return "true"
 		else return ""
-	}else{
+	} else {
 		return data as string
 	}
 }
@@ -285,14 +304,14 @@ export const defaultUniFavX : UniFavX = {
 // easyinput
 
 export type UniEasyInputXStyles = {
-	color?:string
-	backgroundColor?:string
-	disableColor?:string
-	borderColor?:string
+	color ?: string
+	backgroundColor ?: string
+	disableColor ?: string
+	borderColor ?: string
 }
 
 export const defaultUniEasyInputX = {
-	styles:{
+	styles: {
 		color: '#333',
 		backgroundColor: '#fff',
 		disableColor: '#F7F6F6',

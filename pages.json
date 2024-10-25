@@ -102,6 +102,13 @@
 			{
 				"navigationBarTitleText" : "easyInputX 输入框"
 			}
+		},
+		{
+			"path" : "pages/uvue/data-checkbox-x/data-checkbox-x",
+			"style" : 
+			{
+				"navigationBarTitleText" : "DataCheckboxX 单选复选框"
+			}
 		}
 	],
 	"globalStyle": {
