@@ -8,7 +8,7 @@
 				<image class="home-header__logo" src="../../static/image/uniui-logo.png" mode="aspectFit"></image>
 				<view class="home-header__content">
 					<view>
-						<text class="home-header__content-title">1兼容web android ios</text>
+						<text class="home-header__content-title">兼容web android ios</text>
 					</view>
 					<view>
 						<!-- <text class="home-header__content-subtitle">uni-ui-x 是 DCloud 官方面向uni-app x开发者提供的一套 ui 解决方案</text> -->
@@ -98,28 +98,34 @@
 					url: 'breadcrumb-x'
 				}] as Item[],
 				form: [{
-					name: 'EasyInputx 搜索框',
+					name: 'EasyInputX 搜索框',
 					url: 'easyinput-x'
 				}] as Item[],
 				unsupport: [{
 					name: 'DataPickerX 及联选择器',
 					url: 'data-picker-x'
+				},{
+					name: 'DataCheckBoxX 单选多选',
+					url: 'data-checkbox-x'
+				},{
+					name: 'DataSelectX 下拉框',
+					url: 'data-select-x'
 				}] as Item[],
 				platform: 'uvue'
 			}
 		},
 		onLoad() {
 			this.$nextTick(() => {
-				uni.navigateTo({
-					url: "/pages/uvue/data-checkbox-x/data-checkbox-x"
-					// url: "/pages/test/test/test"
-				})
+				// uni.navigateTo({
+				// 	url: "/pages/uvue/data-checkbox-x/data-checkbox-x"
+				// 	// url: "/pages/test/test/test"
+				// })
 			})
 		},
 		methods: {
 			click() {
 				uni.navigateTo({
-					url: "/pages/test/test/test-setup"
+					url: "/pages/test/test/test"
 				})
 			},
 			splitX(str : string) : string {

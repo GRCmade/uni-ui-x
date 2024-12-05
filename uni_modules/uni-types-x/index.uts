@@ -1,98 +1,10 @@
 // TODO 不能已多层级的方式调用，uniappx可以，uniapp不可以
 // import { UniBadgeXDotStyle,UniBadgeXPositionStyle,UniBadgeX,defaultUniBadgeX } from "./types/badge"
 
-
-export function StrNum2NumInt(data ?: any) : number {
-	return typeof data == 'string' ? parseInt(data as string) : data as number
-}
-
-/**
- * 转为arr
- * 非arr的变为【data】
- */
-export function ArrStrNum2Arr<T>(data ?: any) : Array<T> {
-	let arr : Array<T> = [];
-	if (Array.isArray(data)) {
-		arr = data as Array<T>;
-	} else {
-		arr.push(data as T)
-	}
-	return arr;
-}
-
-export function StrNum2Str(data ?: any) : string {
-	return typeof data == 'string' ? data as string : data?.toString() ?? '';
-}
-
-export function BoolStr2Bool(data ?: any) : Boolean {
-	if (typeof data == 'boolean') {
-		return data as boolean
-	} else {
-		if (data == 'true') return true
-		else return false
-	}
-}
-
-export function BoolStr2Str(data ?: any) : string {
-	if (typeof data == 'boolean') {
-		if (data == true) return "true"
-		else return ""
-	} else {
-		return data as string
-	}
-}
+export * from "./utils"
+export * from "./type/badgex"
 
 
-export type UniBadgeType = "primary" | "success" | "warning" | "error" | "info"
-export type UniBadgeAbsolute = "rightTop" | "rightBottom" | "leftBottom" | "leftTop"
-/**
- * UniBadgeX badge的类型
- */
-export type UniBadgeX = {
-	/**
-		* @property {String} type = [info|primary|success|warning|error] 颜色类型
-		*	@value info 灰色
-		*	@value primary 蓝色
-		* @value success 绿色
-		* @value warning 黄色
-		* @value error 红色
-	 */
-	type ?: UniBadgeType
-	inverted ?: boolean
-	isDot ?: boolean
-	maxNum ?: number
-	absolute ?: UniBadgeAbsolute
-	offset ?: number[]
-	text ?: number
-	size ?: string
-}
-
-export type UniBadgeXPositionStyle = {
-	right ?: string
-	left ?: string
-	top ?: string
-	bottom ?: string
-}
-
-
-export type UniBadgeXDotStyle = {
-	width ?: string
-	minWidth ?: string
-	height ?: string
-	padding ?: string
-	borderRadius ?: string
-}
-
-export const defaultUniBadgeX = {
-	type: "error",
-	inverted: false,
-	isDot: false,
-	maxNum: 99,
-	absolute: '',
-	offset: [0, 0],
-	text: 0,
-	size: 'small'
-}
 
 
 

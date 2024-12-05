@@ -1,17 +1,17 @@
 <template>
 	<view class="uni-data-checklist" :style="{'margin-top':isTop+'px'}">
-		<template v-if="!isLocal">
+		<view v-if="!isLocal">
 			<view class="uni-data-loading">
 				<!-- <uni-load-more v-if="mixinDatacomErrorMessage == ''" status="loading" iconType="snow" :iconSize="18"
 					:content-text="contentText"></uni-load-more>
 				<text v-else>{{mixinDatacomErrorMessage}}</text> -->
 			</view>
-		</template>
-		<template v-else>
+		</view>
+		<view v-else>
 			<checkbox-group v-if="multiple" class="checklist-group" :class="{'is-list':mode==='list' || wrap}"
-				@change="change">
+				@change="changeCheckBox">
 				<!-- 将label改为view -->
-				<label class="checklist-box" :class="['is--'+mode,item.selected == true?'is-checked':'',(disabled ||
+				<view class="checklist-box" :class="['is--'+mode,item.selected == true?'is-checked':'',(disabled ||
 					item.disabled == true)?'is-disable':'',index!==0&&mode==='list' ?'is-list-border':'']"
 					:style="item.styleBackgroud+''" v-for="(item,index) in dataList" :key="index">
 					<checkbox class="hidden" hidden :disabled="disabled || item.disabled==true" :value="item[map.value]"
@@ -25,14 +25,15 @@
 						<view v-if="mode === 'list' && icon === 'right'" class="checkobx__list" :style="item.styleBackgroud+''">
 						</view>
 					</view>
-				</label>
+				</view>
 			</checkbox-group>
-			<radio-group v-else class="checklist-group" :class="{'is-list':mode==='list','is-wrap':wrap}" @change="change">
-				<label class="checklist-box"
+			<radio-group v-else class="checklist-group" :class="{'is-list':mode==='list','is-wrap':wrap}"
+				@change="changeRadio">
+				<view class="checklist-box"
 					:class="['is--'+mode,item.selected == true?'is-checked':'',(disabled || item.disabled == true)?'is-disable':'',index!==0&&mode==='list'?'is-list-border':'']"
 					:style="item.styleBackgroud+''" v-for="(item,index) in dataList" :key="index">
 					<radio class="hidden" hidden :disabled="disabled || item.disabled == true" :value="item[map.value]"
-						:checked="item.selected" />
+						:checked="item.selected" :id="index" />
 					<view v-if="(mode !=='tag' && mode !== 'list') || ( mode === 'list' && icon === 'left')" class="radio__inner"
 						:style="item.styleBackgroud+''">
 						<view class="radio__inner-icon" :style="item.styleIcon+''"></view>
@@ -42,9 +43,9 @@
 						<view v-if="mode === 'list' && icon === 'right'" :style="item.styleRightIcon+''" class="checkobx__list">
 						</view>
 					</view>
-				</label>
+				</view>
 			</radio-group>
-		</template>
+		</view>
 	</view>
 </template>
 
@@ -122,20 +123,16 @@
 			},
 			value: {
 				type: [Array, String, Number],
-				default () {
-					return ''
-				}
+				default:''
 			},
 			// TODO vue3
 			modelValue: {
 				type: [Array, String, Number],
-				default () {
-					return '';
-				}
+				default:''
 			},
 			localdata: {
 				type: Array as PropType < dataListItem[] > ,
-				default: [] as dataListItem[] 
+				default: [] as dataListItem[]
 			},
 			min: {
 				type: [Number, String],
@@ -178,7 +175,8 @@
 			localdata: {
 				handler(newVal) {
 					this.range = newVal
-					this.dataList = this.getDataList(ArrStrNum2Arr < number > (this.getSelectedValue(this.range)))
+					this.dataList = this.getDataList(ArrStrNum2Arr < number > (this.getSelectedValue(JSON.parse < dataListItem[] >
+						(JSON.stringify(this.range) !))))
 				},
 				deep: true
 			},
@@ -221,10 +219,10 @@
 			};
 		},
 		computed: {
-			dataValue():number[] {
-				if (this.value === '') return ArrStrNum2Arr<number>(this.modelValue)
-				if (this.modelValue === '') return ArrStrNum2Arr<number>(this.value)
-				return ArrStrNum2Arr<number>(this.value)
+			dataValue(): number[] {
+				if (this.value === '') return ArrStrNum2Arr < number > (this.modelValue)
+				if (this.modelValue === '') return ArrStrNum2Arr < number > (this.value)
+				return ArrStrNum2Arr < number > (this.value)
 			}
 		},
 		created() {
@@ -248,7 +246,8 @@
 			if (this.localdata.length !== 0) {
 				this.isLocal = true
 				this.range = this.localdata
-				this.dataList = this.getDataList(ArrStrNum2Arr < number > (this.getSelectedValue(this.range)))
+				this.dataList = this.getDataList(ArrStrNum2Arr < number > (this.getSelectedValue(JSON.parse < dataListItem[] > (
+					JSON.stringify(this.range) !))))
 			} else {
 				// TODO 未找到collection
 				// if (this.collection) {
@@ -287,8 +286,15 @@
 			// 	}
 			// 	return parent;
 			// },
-			change(e: UniCheckboxGroupChangeEvent) {
-				const values = e.detail.value;
+
+			changeCheckBox(e: UniCheckboxGroupChangeEvent) {
+				this.change(e.detail.value)
+			},
+			changeRadio(e: UniRadioGroupChangeEvent) {
+				this.change([e.detail.value])
+			},
+			change(e: string[]) {
+				const values = e;
 
 				let detail: dataListItemDetial = {
 					data: [] as dataListItem[],
@@ -309,7 +315,7 @@
 						detail = {
 							value: [range[this.map.value] as number],
 							data: [range]
-						}
+						} as dataListItemDetial
 					}
 				}
 				// this.formItem && this.formItem.setValue(detail.value)
@@ -336,7 +342,7 @@
 			 */
 			getDataList(value: number[]): dataListItem[] {
 				// 解除引用关系，破坏原引用关系，避免污染源数据
-				// console.log("value",value)
+				console.log("value",value)
 				let dataList = JSON.parse < dataListItem[] > (JSON.stringify(this.range) !)
 				let list: dataListItem[] = []
 				if (this.multiple) {
@@ -382,27 +388,27 @@
 				list.forEach((item, index) => {
 					if (this.multiple) {
 						if (selectList.length <= min) {
-						    for (let i = 0; i < selectList.length; i++) {
-						        const val = selectList[i];
-						        if (val[this.map.value] === item[this.map.value]) {
-						            item.disabled = true;
-						            break;
-						        }
-						    }
+							for (let i = 0; i < selectList.length; i++) {
+								const val = selectList[i];
+								if (val[this.map.value] === item[this.map.value]) {
+									item.disabled = true;
+									break;
+								}
+							}
 						}
 
-						if (selectList.length >= max ) {
-						    let have = false;
-						    for (let i = 0; i < selectList.length; i++) {
-						        const val = selectList[i];
-						        if (val[this.map.value] === item[this.map.value]) {
-						            have = true;
-						            break;
-						        }
-						    }
-						    if (!have) {
-						        item.disabled = true;
-						    }
+						if (selectList.length >= max) {
+							let have = false;
+							for (let i = 0; i < selectList.length; i++) {
+								const val = selectList[i];
+								if (val[this.map.value] === item[this.map.value]) {
+									have = true;
+									break;
+								}
+							}
+							if (!have) {
+								item.disabled = true;
+							}
 						}
 					}
 					this.setStyles(item, index)
@@ -415,7 +421,7 @@
 			 * @param {Object} item
 			 * @param {Object} index
 			 */
-			setStyles(item:dataListItem, index:number):void {
+			setStyles(item: dataListItem, index: number): void {
 				//  设置自定义样式
 				item.styleBackgroud = this.setStyleBackgroud(item)
 				item.styleIcon = this.setStyleIcon(item)
@@ -427,29 +433,30 @@
 			 * 获取选中值
 			 * @param {Object} range
 			 */
-			getSelectedValue(range:dataListItem[]):number[] {
+			getSelectedValue(range ? : dataListItem[]): number[] {
 				if (!this.multiple) return this.dataValue
-				let selectedArr:number[] = []
-				range.forEach((item) => {
-					if (item.selected == true) {
-						selectedArr.push(item[this.map.value] as number)
+				let selectedArr: number[] = []
+				for (let i = 0; i < range!!.length; i++) {
+					const item = range[i];
+					if (item.selected === true) {
+						selectedArr.push(item[this.map.value] as number);
 					}
-				})
+				}
 				return this.dataValue.length > 0 ? this.dataValue : selectedArr
 			},
 
 			/**
 			 * 设置背景样式
 			 */
-			setStyleBackgroud(item:dataListItem):string {
+			setStyleBackgroud(item: dataListItem): string {
 				let styles = {}
-				let selectedColor = this.selectedColor!='' ? this.selectedColor : '#2979ff'
-				if (this.selectedColor!='') {
+				let selectedColor = this.selectedColor != '' ? this.selectedColor : '#2979ff'
+				if (this.selectedColor != '') {
 					if (this.mode !== 'list') {
 						styles['border-color'] = item.selected == true ? selectedColor : '#DCDFE6'
 					}
 					if (this.mode === 'tag') {
-						styles['background-color'] = item.selected  == true ? selectedColor : '#f5f5f5'
+						styles['background-color'] = item.selected == true ? selectedColor : '#f5f5f5'
 					}
 				}
 				let classles = ''
@@ -458,10 +465,10 @@
 				}
 				return classles
 			},
-			setStyleIcon(item:dataListItem):string {
+			setStyleIcon(item: dataListItem): string {
 				let styles = {}
 				let classles = ''
-				if (this.selectedColor !='') {
+				if (this.selectedColor != '') {
 					let selectedColor = this.selectedColor != '' ? this.selectedColor : '#2979ff'
 					styles['background-color'] = item.selected == true ? selectedColor : '#fff'
 					styles['border-color'] = item.selected == true ? selectedColor : '#DCDFE6'
@@ -476,18 +483,20 @@
 				}
 				return classles
 			},
-			setStyleIconText(item:dataListItem):string {
+			setStyleIconText(item: dataListItem): string {
 				let styles = {}
 				let classles = ''
 				if (this.selectedColor != '') {
-					let selectedColor = this.selectedColor  != '' ? this.selectedColor : '#2979ff'
+					let selectedColor = this.selectedColor != '' ? this.selectedColor : '#2979ff'
 					if (this.mode === 'tag') {
-						styles["color"]= item.selected == true ? (this.selectedTextColor != ''  ? this.selectedTextColor : '#fff') : '#666'
+						styles["color"] = item.selected == true ? (this.selectedTextColor != '' ? this.selectedTextColor :
+							'#fff') : '#666'
 					} else {
-						styles["color"]= item.selected  == true? (this.selectedTextColor != ''  ? this.selectedTextColor : selectedColor) : '#666'
+						styles["color"] = item.selected == true ? (this.selectedTextColor != '' ? this.selectedTextColor :
+							selectedColor) : '#666'
 					}
 					if (item.selected == false && item.disabled == true) {
-						styles["color"]= '#999'
+						styles["color"] = '#999'
 					}
 				}
 				for (let i in styles) {
@@ -495,7 +504,7 @@
 				}
 				return classles
 			},
-			setStyleRightIcon(item:dataListItem):string {
+			setStyleRightIcon(item: dataListItem): string {
 				let styles = {}
 				let classles = ''
 				if (this.mode === 'list') {

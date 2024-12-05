@@ -1,0 +1,38 @@
+export function StrNum2NumInt(data ?: any) : number {
+	return typeof data == 'string' ? parseInt(data as string) : data as number
+}
+/**
+ * 转为arr
+ * 非arr的变为【data】
+ */
+export function ArrStrNum2Arr<T>(data ?: any) : Array<T> {
+	let arr : Array<T> = [];
+	if (Array.isArray(data)) {
+		arr = data as Array<T>;
+	} else {
+		arr.push(data as T)
+	}
+	return arr;
+}
+
+export function StrNum2Str(data ?: any) : string {
+	return typeof data == 'string' ? data as string : data?.toString() ?? '';
+}
+
+export function BoolStr2Bool(data ?: any) : Boolean {
+	if (typeof data == 'boolean') {
+		return data as boolean
+	} else {
+		if (data == 'true') return true
+		else return false
+	}
+}
+
+export function BoolStr2Str(data ?: any) : string {
+	if (typeof data == 'boolean') {
+		if (data == true) return "true"
+		else return ""
+	} else {
+		return data as string
+	}
+}

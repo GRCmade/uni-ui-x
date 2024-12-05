@@ -1,0 +1,51 @@
+
+export type UniBadgeType = "primary" | "success" | "warning" | "error" | "info"
+export type UniBadgeAbsolute = "rightTop" | "rightBottom" | "leftBottom" | "leftTop"
+/**
+ * UniBadgeX badge的类型
+ */
+export type UniBadgeX = {
+	/**
+		* @property {String} type = [info|primary|success|warning|error] 颜色类型
+		*	@value info 灰色
+		*	@value primary 蓝色
+		* @value success 绿色
+		* @value warning 黄色
+		* @value error 红色
+	 */
+	type ?: UniBadgeType
+	inverted ?: boolean
+	isDot ?: boolean
+	maxNum ?: number
+	absolute ?: UniBadgeAbsolute
+	offset ?: number[]
+	text ?: number
+	size ?: string
+}
+
+export type UniBadgeXPositionStyle = {
+	right ?: string
+	left ?: string
+	top ?: string
+	bottom ?: string
+}
+
+
+export type UniBadgeXDotStyle = {
+	width ?: string
+	minWidth ?: string
+	height ?: string
+	padding ?: string
+	borderRadius ?: string
+}
+
+export const defaultUniBadgeX = {
+	type: "error",
+	inverted: false,
+	isDot: false,
+	maxNum: 99,
+	absolute: '',
+	offset: [0, 0],
+	text: 0,
+	size: 'small'
+}
