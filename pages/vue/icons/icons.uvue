@@ -1,0 +1,96 @@
+<template>
+	<view class="container">
+		<uni-card :is-shadow="false" is-full>
+			<text class="uni-h6">图标组件方便用户在设计页面的时候，减少小图片的使用。可方便自定义图标单色、尺寸。</text>
+		</uni-card>
+		<uni-section title="图标" type="line">
+			<template v-slot:right>
+				<view>
+					<switch :checked="checked" @change="change" />
+				</view>
+			</template>
+			<view class="icon-content">
+				<view v-for="(item,index) in iconClassList" :key="index" class="icon-item" @click="switchActive(index,item)">
+					<uni-icons :type="item.font_class" :color="activeIndex === index?'#007aff':'#5e6d82'" :size="30" />
+					<text :style="{color:activeIndex === index?'#007aff':'#5e6d82'}"
+						class="uni-mt-5 uni-subtitle">{{ checked? item.unicode: item.font_class }}</text>
+				</view>
+			</view>
+		</uni-section>
+		<!-- #ifndef APP-PLUS -->
+		<uni-section title="自定义图标" subTitle="引入参考App.vue" type="line">
+			<view class="icon-content">
+				<view class="icon-item" >
+					<uni-icons customPrefix="customicons" type="youxi" color="#5e6d82" :size="22" />
+					<text style="color:#5e6d82;">youxi</text>
+				</view>
+				<view class="icon-item" >
+					<uni-icons customPrefix="customicons" type="wenjian" color="#5e6d82" :size="22" />
+					<text style="color:#5e6d82;">wenjian</text>
+				</view>
+				<view class="icon-item" >
+					<uni-icons customPrefix="customicons" type="zhuanfa" color="#5e6d82" :size="22" />
+					<text style="color:#5e6d82;">zhuanfa</text>
+				</view>
+			</view>
+		</uni-section>
+		<!-- #endif -->
+	</view>
+</template>
+
+<script>
+	import {iconlist} from'./icons.js'
+	export default {
+		components: {},
+		data() {
+			return {
+				iconClassList: iconlist,
+				activeIndex: -1,
+				checked: false
+			}
+		},
+		methods: {
+			change(e) {
+				// e.detail.value在安卓手机上可能是String类型，后续修复后要修改
+				this.checked = e.detail.value === 'false' || !e.detail.value ? false : true
+			},
+			switchActive(index,item) {
+				this.activeIndex = index
+				uni.setClipboardData({
+				    data: !this.checked ? item.name:item.unicode,
+				    success:  ()=> {
+				        uni.showToast({
+				        	icon:'none',
+									title:`${!this.checked ?'图标名称':'unicode'}复制成功`
+				        })
+				    }
+				});
+			}
+		}
+	}
+</script>
+
+<style lang="scss">
+
+	.icon-content {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: row;
+		justify-content: center;
+
+		.icon-item {
+			/* #ifndef APP-NVUE */
+			display: flex;
+			box-sizing: border-box;
+			width: calc(100% / 4);
+			/* #endif */
+			/* #ifdef APP-NVUE */
+			width: 187rpx;
+			/* #endif */
+			align-items: center;
+			padding: 10px;
+			text-align: center;
+			flex-direction: column;
+		}
+	}
+</style>
